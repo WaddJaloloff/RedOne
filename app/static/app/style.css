@@ -1,0 +1,220 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    margin: auto;
+}
+
+.navbar {
+    background-color: #000 !important;
+    position: fixed;
+
+}
+
+.sticky-top{
+    padding: 20px !important;
+
+}
+
+.navbar .nav-link,
+.navbar .navbar-brand,
+.navbar .dropdown-item {
+    color: #fff !important;
+}
+
+.navbar-collapse{
+    justify-content: end !important;
+}
+.navbar .nav-link:hover,
+.navbar .dropdown-item:hover {
+    color: #f39c12 !important; /* hover paytida sariq rang */
+}
+.custom-navbar {
+    background-color: false !important; /* yarim shaffof qora fon */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+.custom-navbar .nav-link,
+.custom-navbar {
+    color: #fff !important;
+}
+
+.dropdown-menu {
+    background-color: #000 !important;
+    color: #fff !important;
+}
+/* .base{
+    text-align: center;
+} */
+.navbar-brand{
+    font-size: 25px !important;
+    color: #fff !important;
+}
+.categories-and-Products h2, .Products h2{
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 100;
+    font-size: 40px;
+}
+.category{
+    padding: 20px;
+}
+.Products{
+    padding: 30px 0;
+}
+
+.container {
+    
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+  
+  .slider {
+    display: flex;
+    justify-content: space-between;
+    transition: transform 0.5s ease;
+  }
+  
+  .item {
+    width: 19%;
+    text-align: center;
+    margin: 0 1%;
+  }
+  .item-product {
+    width: 24%;
+
+    text-align: center;
+    margin: 0 1%;
+  }
+  
+  .item img, .item-product img{
+    border-radius: 10px;
+    width: 100%;
+    transition: transform 0.3s ease;
+  }
+  
+  .item p, .item-product p {
+    margin-top: 10px;
+    font-size: 17px;
+    color: #555;
+  }
+.image-with-text__text {
+    margin-bottom: 50px;
+}
+.image-with-text__content{
+    margin: 0;
+}
+.image-with-text__heading{
+    font-family: "Avenir Next Rounded", sans-serif;
+    margin-bottom: 10px;
+
+}
+  .button--secondary{
+    color: #fff;
+    border-radius: 12px;
+    border: 1px solid #fff;
+    padding: 15px 20px;
+  }
+  
+  /* Media Query for smaller screens */
+  @media (max-width: 990px) {
+    .about-img{
+        max-width: 100% !important;
+    }
+    .about-big{
+        display: flex;
+        flex-direction: column !important;
+    }
+    
+    .slider {
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      display: flex;
+      gap: 10px;
+    }
+  
+    .item{
+        flex: 0 0 95%; /* Rasmni 95% gacha kattalashtirish */
+        scroll-snap-align: start;
+      }
+    .item-product {
+        flex: 0 0 55%; /* Rasmni 95% gacha kattalashtirish */
+        scroll-snap-align: start;
+      }
+  
+    .item img, .item-product img {
+      width: 100%;
+    }
+  }
+  
+
+.sticky-top{
+    padding: 20px 50px !important;
+}
+
+.view-all{
+    background-color: #000;
+    color: #fff;
+    border-radius: 0.8em;
+    padding: 12px 15px;
+    font-size: 1.5em;    
+    letter-spacing: .1rem;
+    cursor: pointer;
+    font: inherit;
+    margin: 30px 0;
+}
+
+.about-us{
+    text-align: start;
+    height: 700px;
+    padding: 50px 0;
+    display: flex;
+    justify-content: center;
+    background-color: #000;
+    color: #fff;
+
+}
+
+.about-big{
+    display: flex;
+    
+    padding: 0 50px;
+    flex-direction: row;
+}
+
+.about-img{
+    max-width: 45%;
+    border-radius: 20px 20px 20px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-img img{
+    margin: auto;
+    border-radius: 25px;
+    /* max-width: 70%; 100% bo‘lishi yaxshi ko‘rinadi */
+    height: auto;
+    object-fit:cover; /* rasmni konteynerga sig‘dirib, ortiqchasini kesadi */
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+  
+}
+
+
+.about-content{
+    /* width: 29%; */
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
