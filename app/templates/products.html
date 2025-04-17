@@ -1,15 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products</title>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    .category {
+      margin-bottom: 30px;
+    }
+    .product-card {
+      margin-bottom: 20px;
+    }
+    .product-card img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+    }
+    .product-card h3 {
+      margin: 10px 0;
+    }
+  </style>
 </head>
 <body>
-    {% for product in products %}
-        <img src="{{product.image.url}}" alt="">
-        <h3>{{product.name}}</h3>
-        <p>{{product.price}}</p>
-    {% endfor %}
+
+  <!-- Kategoriyalar -->
+  {% for category in categories %}
+    <div id="{{ category.name|slugify }}" class="category">
+      <h2>{{ category.name }} 12</h2>
+      
+      <!-- Mahsulotlar -->
+      {% for product in category.product_set.all %}
+        <div class="product-card">
+          <img src="{{ product.image.url }}" alt="{{ product.name }}">
+          <h3>{{ product.name }}</h3>
+          <p>{{ product.price }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  {% endfor %}
+
 </body>
 </html>

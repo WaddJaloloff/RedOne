@@ -41,9 +41,10 @@
               Kategoriyalar
             </a>
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
+              {% for category in categories %}
+              <a class="dropdown-item" href="{% url 'products' %}#{{ category|slugify }}">{{ category }}</a>
+
+              {% endfor %}
             </div>
           </li>
           <li class="nav-item">
