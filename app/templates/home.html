@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>RedOne</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <link rel="stylesheet" type="text/css" href="{% static 'app/style.css' %}">
@@ -41,16 +41,16 @@
               Kategoriyalar
             </a>
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
+              <a class="dropdown-item" href="{% url 'products' %}#wax">Wax</a>
+              <a class="dropdown-item" href="{% url 'products' %}#skin">Skin Care</a>
+              <a class="dropdown-item" href="{% url 'products' %}#hair">Hair Styling</a>
             </div>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#about">Haqimizda</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Aloqa</a>
+            <a class="nav-link" href="{% url 'products' %}">Mahsulotlar</a>
           </li>
         </ul>
       </div>
@@ -76,8 +76,6 @@
                       fill="currentColor"></path>
                   </svg>
                 </span>
-
-
               </p>
             </div>
             <div class="item">
@@ -151,7 +149,7 @@
       <div class="Products">
         <h2>Mashhur
         </h2>
-        <div class="container" style="margin: auto; width: 100%; max-width: 90%; ">
+        <div class="container">
           <div class="slider">
             <!-- {% for product in products %} 
            
@@ -275,7 +273,7 @@
     <div class="Products">
       <h2>Mashhur
       </h2>
-      <div class="container" style="margin: auto; width: 100%; max-width: 90%; ">
+      <div class="container">
         <div class="slider">
           <div class="item-product">
             <img src="/media/81uorYq6nL._AC_SX679_-Photoroom.png" alt="Image 5">
@@ -351,7 +349,7 @@
           <div class="footer-col">
             <h4>tashkilot</h4>
             <ul>
-              <li><a href="#">biz haqimizda</a></li>
+              <li><a href="#about">biz haqimizda</a></li>
               <li><a href="#">hizmatlarimiz</a></li>
               <li><a href="#">siyosat</a></li>
             </ul>
