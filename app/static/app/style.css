@@ -287,3 +287,11 @@ body{
 .category-item {
   scroll-margin-top: 150px; 
 }
+
+
+@media (max-width: 990px) { 
+.category-heading {
+  text-align: center;
+  font-size: 33px;
+  margin-bottom: 5px;
+}}
