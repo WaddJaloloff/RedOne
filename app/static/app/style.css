@@ -74,8 +74,7 @@ body{
   padding: 30px 10px; 
 } 
 
-.container { 
-   
+.container {
   width: 100%; 
   max-width: 100%; 
   overflow: hidden; 
@@ -281,7 +280,7 @@ body{
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.282); 
   border-radius: 10px;
   overflow: hidden; 
-  width: 250px; 
+  width: 220px; 
 }
 
 .category-product { 
