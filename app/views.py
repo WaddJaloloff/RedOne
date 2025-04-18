@@ -5,11 +5,15 @@ from .models import *
 # Create your views here.
 def index(request):
     products = Product.objects.filter(is_active=True)
+    print(products)
     categories = Categories.objects.filter(product__is_active=True).distinct()
     return render(request, 'home.html', {'products': products, 'categories': categories})
+
+
 def products(request):
+    products = Product.objects.filter(is_active=True)
     categories = Categories.objects.filter(product__is_active=True).distinct()  # faqat aktiv kategoriyalar
-    return render(request, 'products.html', {'categories': categories})
+    return render(request, 'products.html', {'products': products, 'categories': categories})
 
 
 def product_detail(request, pk):

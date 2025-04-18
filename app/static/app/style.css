@@ -69,8 +69,9 @@ body{
 .category{ 
   padding: 20px; 
 } 
+
 .Products{ 
-  padding: 30px 0; 
+  padding: 30px 10px; 
 } 
 
 .container { 
@@ -100,6 +101,7 @@ body{
   display: inline-block; 
   border-radius: 10px; 
   background-color: #f2f2f2dd; 
+  flex: 0 0 auto;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.282); 
 } 
 
@@ -273,3 +275,23 @@ body{
   align-items: center; 
   justify-content: center; 
 }
+
+.products-category {
+  margin: 50px 0;
+}
+
+.category-item {
+  padding: 30px 0;
+}
+
+.category-item {
+  scroll-margin-top: 150px; 
+}
+
+
+@media (max-width: 990px) { 
+.category-heading {
+  text-align: center;
+  font-size: 33px;
+  margin-bottom: 5px;
+}}

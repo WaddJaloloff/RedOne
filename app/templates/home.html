@@ -43,7 +43,6 @@
             <div class="dropdown-menu">
               {% for category in categories %}
               <a class="dropdown-item" href="{% url 'products' %}#{{ category|slugify }}">{{ category }}</a>
-
               {% endfor %}
             </div>
           </li>
@@ -51,7 +50,7 @@
             <a class="nav-link" href="#about">Haqimizda</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Aloqa</a>
+            <a class="nav-link" href="#footer">Aloqa</a>
           </li>
         </ul>
       </div>
@@ -232,9 +231,11 @@
           </div>
 
           <div style=" display: flex; justify-content: center;">
-            <button class="view-all" type="submit">
-              Yana ko'rish
-            </button>
+            <a href="{% url 'products' %}">
+              <button class="view-all" type="submit">
+                Yana ko'rish
+              </button>
+            </a>
           </div>
         </div>
 
@@ -337,16 +338,18 @@
         </div>
 
         <div style=" display: flex; justify-content: center;">
-          <button class="view-all" type="submit">
-            Yana ko'rish
-          </button>
+          <a href="{% url 'products' %}">
+            <button class="view-all" type="submit">
+              Yana ko'rish
+            </button>
+          </a>
         </div>
       </div>
 
 
     </div>
 
-    <footer class="footer">
+    <footer id="footer" class="footer">
       <div class="container">
         <div class="row">
           <div class="footer-col">
