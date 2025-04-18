@@ -325,7 +325,7 @@ body{
     margin-bottom: -0;
     margin-right: -0;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   .category-img-wrapper {
@@ -356,7 +356,6 @@ body{
   .category-heading {
     font-size: 30px;
     margin-bottom: 5px;
-    text-align: center;
   }
 }
 
