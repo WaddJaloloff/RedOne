@@ -4,12 +4,19 @@ from .models import *
 
 # Create your views here.
 def index(request):
-    products = Product.objects.all() #.filter(category__category='wax')
+    products = Product.objects.filter(is_active=True).select_related('category')  # tezroq ishlashi uchun
+    categories = Categories.objects.filter(product__is_active=True).distinct()
     return render(request, 'home.html', {'products': products})
 
+
 def products(request):
-    products = Product.objects.all() 
-    return render(request, 'products.html', {'products': products})
+    products = Product.objects.filter(is_active=True).select_related('category')  # tezroq ishlashi uchun
+    categories = Categories.objects.filter(product__is_active=True).distinct()
+    return render(request, 'products.html', {
+        'products': products,
+        'categories': categories
+    })
+
 
 def product_detail(request, pk):
     product = Product.objects.get(pk=pk)

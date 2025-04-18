@@ -267,14 +267,14 @@ body{
 }
 
 .product-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 50px;
-  flex-wrap: wrap;
-  margin-bottom: -20px;
-  margin-right: -20px;
-}
-
+    display: flex;
+    align-items: center;
+    gap: 50px; /* 40 */
+    flex-wrap: wrap;
+    margin-bottom: -20px;
+    margin-right: -20px;
+  }
+  
 .category-img-wrapper {
   background-color: #f2f2f2dd; 
   flex: 0 0 auto;
@@ -330,7 +330,7 @@ body{
   }
 
   .category-img-wrapper {
-    width: 175px;
+    width: 175px; /*150*/
   }
 
   .category-product img { 

@@ -14,6 +14,7 @@ class Product(models.Model):
     about = models.TextField(null=True, blank=True)
     category = models.ForeignKey(Categories, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='images')
+    is_active=models.BooleanField(default=True)
     def __str__(self):
         return self.name
     
