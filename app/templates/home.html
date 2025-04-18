@@ -166,28 +166,26 @@
         </div> 
  
           {% endfor %} -->
-          <ul style="margin: 15px 0;" class="products-category">
-            <li style="padding: 0;" class="category-item">
-              <div class="product-wrapper">
-                {% for product in products %}
-                <a class="category-product">
-                  <div class="category-img-wrapper">
-                    <img src="{{product.image.url}}" alt="Image 5">
-                  </div>
-                  <p class="category-p">{{product.name}}
-                    <span class="icon-wrap">
-                      <svg style="width: 15px;" viewBox="0 0 14 10" fill="none" aria-hidden="true" focusable="false"
-                        class="icon icon-arrow" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                          d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z"
-                          fill="currentColor"></path>
-                      </svg>
-                    </span>
-                  </p>
-                </a>
-                {% endfor %}
+          <ul style="margin: 15px 0;" class="slider">
+            {% for product in products %}
+            <a class="item-product">
+              <div class="item-img-wrapper">
+                <img src="{{product.image.url}}" alt="Image 5">
               </div>
-            </li>
+              <p>{{product.name}}
+                <span class="icon-wrap">
+                  <svg style="width: 15px;" viewBox="0 0 14 10" fill="none" aria-hidden="true" focusable="false"
+                    class="icon icon-arrow" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z"
+                      fill="currentColor"></path>
+                  </svg>
+                </span>
+    
+    
+              </p>
+            </a>
+            {% endfor %}
           </ul>
         </div>
 
@@ -239,29 +237,25 @@
     <h2>Mashhur
     </h2>
     <div class="container">
-      <ul style="margin: 15px 0;" class="products-category">
-        <li style="padding: 0;" class="category-item">
-          <div class="product-wrapper">
-            {% for product in products %}
-            <a class="category-product">
-              <div class="category-img-wrapper">
-                <img src="{{product.image.url}}" alt="Image 5">
-              </div>
-              <p class="category-p">{{product.name}}
-                <span class="icon-wrap">
-                  <svg style="width: 15px;" viewBox="0 0 14 10" fill="none" aria-hidden="true" focusable="false"
-                    class="icon icon-arrow" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd"
-                      d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z"
-                      fill="currentColor"></path>
-                  </svg>
-                </span>
-              </p>
-            </a>
-            {% endfor %}
-          </div>
-        </li>
-      </ul>
+      <ul style="margin: 15px 0;" class="slider">
+        {% for product in products %}
+        <a class="item-product">
+          <img src="{{product.image.url}}" alt="Image 5">
+          <p>{{product.name}}
+            <span class="icon-wrap">
+              <svg style="width: 15px;" viewBox="0 0 14 10" fill="none" aria-hidden="true" focusable="false"
+                class="icon icon-arrow" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z"
+                  fill="currentColor"></path>
+              </svg>
+            </span>
+
+
+          </p>
+        </a>
+        {% endfor %}
+  </ul>
 
     </div>
   </div>
