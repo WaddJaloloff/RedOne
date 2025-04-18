@@ -6,7 +6,7 @@ from .models import *
 def index(request):
     products = Product.objects.filter(is_active=True).select_related('category')  # tezroq ishlashi uchun
     categories = Categories.objects.filter(product__is_active=True).distinct()
-    return render(request, 'home.html', {'products': products})
+    return render(request, 'home.html', {'products': products, 'categories': categories})
 
 
 def products(request):

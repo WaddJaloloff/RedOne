@@ -41,9 +41,9 @@
               Kategoriyalar
             </a>
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="{% url 'products' %}#wax">Wax</a>
-              <a class="dropdown-item" href="{% url 'products' %}#skin">Skin Care</a>
-              <a class="dropdown-item" href="{% url 'products' %}#hair">Hair Styling</a>
+              {%for category in categories%}
+                <a class="dropdown-item" href="{% url 'products' %}#{{category}}">{{category}}</a>
+              {% endfor %}
             </div>
           </li>
           <li class="nav-item">

@@ -46,7 +46,7 @@
                   </div>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#about">Haqimizda</a>
+                  <a class="nav-link" href="{% url 'index' %}#about">Haqimizda</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'products' %}">Mahsulotlar</a>
@@ -63,60 +63,110 @@
                 {% for category in categories %}
                 <li class="category-item" id="{{ category.category }}">
                     <!-- Category ismi -->
-                    <h1 class="category-heading">{{ category.category }}</h1>
+                    <h2 class="category-heading">{{ category.category }}</h2>
                     <div class="product-wrapper">
                         {% for product in products %}
                             {% if product.category == category %}
-                            <a class="category-product">
-                                <div class="category-img-wrapper">
-                                    <img src="{{product.image.url}}" alt="Image 5">
-                                </div>
-                                <p class="category-p">{{product.name}}
-                                    <span class="icon-wrap">
-                                        <svg style="width: 15px;" viewBox="0 0 14 10" fill="none" aria-hidden="true"
-                                            focusable="false" class="icon icon-arrow" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z"
-                                                fill="currentColor"></path>
-                                        </svg>
-                                    </span>
-                                </p>
-                                <p class="category-price">{{product.price}}</p>
-                            </a>
-                            <a class="category-product">
-                                <div class="category-img-wrapper">
-                                    <img src="{{product.image.url}}" alt="Image 5">
-                                </div>
-                                <p class="category-p">{{product.name}}
-                                    <span class="icon-wrap">
-                                        <svg style="width: 15px;" viewBox="0 0 14 10" fill="none" aria-hidden="true"
-                                            focusable="false" class="icon icon-arrow" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z"
-                                                fill="currentColor"></path>
-                                        </svg>
-                                    </span>
-                                </p>
-                                <p class="category-price">{{product.price}}</p>
-                            </a>
-                            <a class="category-product">
-                                <div class="category-img-wrapper">
-                                    <img src="{{product.image.url}}" alt="Image 5">
-                                </div>
-                                <p class="category-p">{{product.name}}
-                                    <span class="icon-wrap">
-                                        <svg style="width: 15px;" viewBox="0 0 14 10" fill="none" aria-hidden="true"
-                                            focusable="false" class="icon icon-arrow" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z"
-                                                fill="currentColor"></path>
-                                        </svg>
-                                    </span>
-                                </p>
-                                <p class="category-price">{{product.price}}</p>
-                            </a>
+                                <a class="category-product">
+                                    <div class="category-img-wrapper">
+                                        <img src="{{product.image.url}}" alt="{{product.name}}">
+                                    </div>
+                                    <p class="category-p">{{product.name}}
+                                        <span class="icon-wrap">
+                                            <svg style="width: 15px;" viewBox="0 0 14 10" fill="none" aria-hidden="true"
+                                                focusable="false" class="icon icon-arrow" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z"
+                                                    fill="currentColor"></path>
+                                            </svg>
+                                        </span>
+                                    </p>
+                                    <p class="category-price">{{product.price}} sum</p>
+                                </a>
                             {% endif %}
                         {% endfor %}
+                        
+                        <a class="category-product">
+                            <div class="category-img-wrapper">
+                                <img src="product.image.url}}" alt="product.name}}">
+                            </div>
+                            <p class="category-p">product.name}}
+                                <span class="icon-wrap">
+                                    <svg style="width: 15px;" viewBox="0 0 14 10" fill="none" aria-hidden="true"
+                                        focusable="false" class="icon icon-arrow" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z"
+                                            fill="currentColor"></path>
+                                    </svg>
+                                </span>
+                            </p>
+                            <p class="category-price">product.price}}</p>
+                        </a>
+                        <a class="category-product">
+                            <div class="category-img-wrapper">
+                                <img src="product.image.url}}" alt="product.name}}">
+                            </div>
+                            <p class="category-p">product.name}}
+                                <span class="icon-wrap">
+                                    <svg style="width: 15px;" viewBox="0 0 14 10" fill="none" aria-hidden="true"
+                                        focusable="false" class="icon icon-arrow" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z"
+                                            fill="currentColor"></path>
+                                    </svg>
+                                </span>
+                            </p>
+                            <p class="category-price">product.price}}</p>
+                        </a>
+                        <a class="category-product">
+                            <div class="category-img-wrapper">
+                                <img src="product.image.url}}" alt="product.name}}">
+                            </div>
+                            <p class="category-p">product.name}}
+                                <span class="icon-wrap">
+                                    <svg style="width: 15px;" viewBox="0 0 14 10" fill="none" aria-hidden="true"
+                                        focusable="false" class="icon icon-arrow" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z"
+                                            fill="currentColor"></path>
+                                    </svg>
+                                </span>
+                            </p>
+                            <p class="category-price">product.price}}</p>
+                        </a>
+                        <a class="category-product">
+                            <div class="category-img-wrapper">
+                                <img src="product.image.url}}" alt="product.name}}">
+                            </div>
+                            <p class="category-p">product.name}}
+                                <span class="icon-wrap">
+                                    <svg style="width: 15px;" viewBox="0 0 14 10" fill="none" aria-hidden="true"
+                                        focusable="false" class="icon icon-arrow" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z"
+                                            fill="currentColor"></path>
+                                    </svg>
+                                </span>
+                            </p>
+                            <p class="category-price">product.price}}</p>
+                        </a>
+                        <a class="category-product">
+                            <div class="category-img-wrapper">
+                                <img src="product.image.url}}" alt="product.name}}">
+                            </div>
+                            <p class="category-p">product.name}}
+                                <span class="icon-wrap">
+                                    <svg style="width: 15px;" viewBox="0 0 14 10" fill="none" aria-hidden="true"
+                                        focusable="false" class="icon icon-arrow" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z"
+                                            fill="currentColor"></path>
+                                    </svg>
+                                </span>
+                            </p>
+                            <p class="category-price">product.price}}</p>
+                        </a>
+                        
                     </div>
                 </li>
                 {% endfor %}
@@ -132,7 +182,7 @@
                     <div class="footer-col">
                         <h4>tashkilot</h4>
                         <ul>
-                            <li><a href="#">biz haqimizda</a></li>
+                            <li><a href="{% url 'index' %}#about">biz haqimizda</a></li>
                             <li><a href="#">hizmatlarimiz</a></li>
                             <li><a href="#">siyosat</a></li>
                         </ul>
@@ -155,7 +205,7 @@
                         </ul>
                     </div>
                     <div class="footer-col">
-                        <h4>bizga qo'shiling</h4>
+                        <h4>Aloqa</h4>
                         <div class="social-links">
                             <a href="#"><i class="fab fa-facebook-f"></i></a>
                             <a href="#"><i class="fab fa-telegram"></i></a>
