@@ -42,7 +42,7 @@
             </a>
             <div class="dropdown-menu">
               {%for category in categories%}
-                <a class="dropdown-item" href="{% url 'products' %}#{{category}}">{{category}}</a>
+              <a class="dropdown-item" href="{% url 'products' %}#{{category}}">{{category}}</a>
               {% endfor %}
             </div>
           </li>
@@ -181,6 +181,8 @@
                       fill="currentColor"></path>
                   </svg>
                 </span>
+
+
               </p>
               
           <p style="color: #777; font-size: 12px;">{{product.price}} sum</p>
@@ -244,6 +246,9 @@
           <div class="item-img-wrapper">
             <img src="{{product.image.url}}" alt="Image 5">
           </div>
+          <div class="item-img-wrapper">
+            <img src="{{product.image.url}}" alt="Image 5">
+          </div>
           <p>{{product.name}}
             <span class="icon-wrap">
               <svg style="width: 15px;" viewBox="0 0 14 10" fill="none" aria-hidden="true" focusable="false"
@@ -259,6 +264,7 @@
           <p style="color: #777; font-size: 12px;">{{product.price}} sum</p>
         </a>
         {% endfor %}
+      </ul>
   </ul>
   <div style=" display: flex; justify-content: center;">
     <a href="{% url 'products' %}">
