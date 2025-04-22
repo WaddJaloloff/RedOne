@@ -27,33 +27,33 @@
         <nav class="navbar navbar-expand-lg navbar-dark custom-navbar sticky-top">
             <a class="navbar-brand" href="#">RedOne</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown">
-              <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
             </button>
-      
+
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
-              <ul class="navbar-nav">
-                <li class="nav-item active">
-                  <a class="nav-link" href="{% url 'index' %}">Bosh Sahifa</a>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
-                    Kategoriyalar
-                  </a>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#wax">Wax</a>
-                    <a class="dropdown-item" href="#skin">Skin Care</a>
-                    <a class="dropdown-item" href="#hair">Hair Styling</a>
-                  </div>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'index' %}#about">Haqimizda</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'products' %}">Mahsulotlar</a>
-                </li>
-              </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'index' %}">Bosh Sahifa</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                            Kategoriyalar
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#wax">Wax</a>
+                            <a class="dropdown-item" href="#skin">Skin Care</a>
+                            <a class="dropdown-item" href="#hair">Hair Styling</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'index' %}#about">Haqimizda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'products' %}">Mahsulotlar</a>
+                    </li>
+                </ul>
             </div>
-          </nav>
+        </nav>
 
         <!-- Category shotda -->
 
@@ -66,107 +66,29 @@
                     <h2 class="category-heading">{{ category.category }}</h2>
                     <div class="product-wrapper">
                         {% for product in products %}
-                            {% if product.category == category %}
-                                <a class="category-product">
-                                    <div class="category-img-wrapper">
-                                        <img src="{{product.image.url}}" alt="{{product.name}}">
-                                    </div>
-                                    <p class="category-p">{{product.name}}
-                                        <span class="icon-wrap">
-                                            <svg style="width: 15px;" viewBox="0 0 14 10" fill="none" aria-hidden="true"
-                                                focusable="false" class="icon icon-arrow" xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                                    d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z"
-                                                    fill="currentColor"></path>
-                                            </svg>
-                                        </span>
-                                    </p>
-                                    <p class="category-price">{{product.price}} sum</p>
-                                </a>
-                            {% endif %}
+                        {% if product.category == category %}
+                        <a href="{% url 'product_detail' product.id %}" class="category-product">
+                            <div class="category-img-wrapper">
+                                <img src="{{product.image.url}}" alt="{{product.name}}">
+                            </div>
+                            <p class="category-p">{{product.name}}
+                                <span class="icon-wrap">
+                                    <svg style="width: 15px;" viewBox="0 0 14 10" fill="none" aria-hidden="true"
+                                        focusable="false" class="icon icon-arrow" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z"
+                                            fill="currentColor"></path>
+                                    </svg>
+                                </span>
+                            </p>
+                            <p class="category-price">{{product.price}} sum</p>
+                            <div class="product-controls">
+                                <button type="button" class="add-to-cart-btn">Savatga qo‘shish</button>
+                            </div>
+                        </a>
+                        {% endif %}
                         {% endfor %}
-                        
-                        <a class="category-product">
-                            <div class="category-img-wrapper">
-                                <img src="product.image.url}}" alt="product.name}}">
-                            </div>
-                            <p class="category-p">product.name}}
-                                <span class="icon-wrap">
-                                    <svg style="width: 15px;" viewBox="0 0 14 10" fill="none" aria-hidden="true"
-                                        focusable="false" class="icon icon-arrow" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z"
-                                            fill="currentColor"></path>
-                                    </svg>
-                                </span>
-                            </p>
-                            <p class="category-price">product.price}}</p>
-                        </a>
-                        <a class="category-product">
-                            <div class="category-img-wrapper">
-                                <img src="product.image.url}}" alt="product.name}}">
-                            </div>
-                            <p class="category-p">product.name}}
-                                <span class="icon-wrap">
-                                    <svg style="width: 15px;" viewBox="0 0 14 10" fill="none" aria-hidden="true"
-                                        focusable="false" class="icon icon-arrow" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z"
-                                            fill="currentColor"></path>
-                                    </svg>
-                                </span>
-                            </p>
-                            <p class="category-price">product.price}}</p>
-                        </a>
-                        <a class="category-product">
-                            <div class="category-img-wrapper">
-                                <img src="product.image.url}}" alt="product.name}}">
-                            </div>
-                            <p class="category-p">product.name}}
-                                <span class="icon-wrap">
-                                    <svg style="width: 15px;" viewBox="0 0 14 10" fill="none" aria-hidden="true"
-                                        focusable="false" class="icon icon-arrow" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z"
-                                            fill="currentColor"></path>
-                                    </svg>
-                                </span>
-                            </p>
-                            <p class="category-price">product.price}}</p>
-                        </a>
-                        <a class="category-product">
-                            <div class="category-img-wrapper">
-                                <img src="product.image.url}}" alt="product.name}}">
-                            </div>
-                            <p class="category-p">product.name}}
-                                <span class="icon-wrap">
-                                    <svg style="width: 15px;" viewBox="0 0 14 10" fill="none" aria-hidden="true"
-                                        focusable="false" class="icon icon-arrow" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z"
-                                            fill="currentColor"></path>
-                                    </svg>
-                                </span>
-                            </p>
-                            <p class="category-price">product.price}}</p>
-                        </a>
-                        <a class="category-product">
-                            <div class="category-img-wrapper">
-                                <img src="product.image.url}}" alt="product.name}}">
-                            </div>
-                            <p class="category-p">product.name}}
-                                <span class="icon-wrap">
-                                    <svg style="width: 15px;" viewBox="0 0 14 10" fill="none" aria-hidden="true"
-                                        focusable="false" class="icon icon-arrow" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z"
-                                            fill="currentColor"></path>
-                                    </svg>
-                                </span>
-                            </p>
-                            <p class="category-price">product.price}}</p>
-                        </a>
-                        
+
                     </div>
                 </li>
                 {% endfor %}
