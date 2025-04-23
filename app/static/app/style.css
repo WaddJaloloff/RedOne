@@ -536,6 +536,26 @@ a:hover {
   }
 }
 
+select {
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+  padding: 5px 10px;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+select option {
+  background-color: black;
+  color: white;
+}
+
+select:focus {
+  outline: none;
+  border-color: #ccc;
+}
+
+
 @media (max-width: 455px) {
   .category-img-wrapper {
     width: 150px;
