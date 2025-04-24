@@ -69,9 +69,9 @@
                         {% if product.category == category %}
                         <a href="{% url 'product_detail' product.id %}" class="category-product">
                             <div class="category-img-wrapper">
-                                <img src="{{product.image.url}}" alt="{{product.name}}">
+                                <img src="{{product.image.url}}" alt="{{product.name_uz}}">
                             </div>
-                            <p class="category-p">{{product.name}}
+                            <p class="category-p">{{product.name_uz}}
                                 <span class="icon-wrap">
                                     <svg style="width: 15px;" viewBox="0 0 14 10" fill="none" aria-hidden="true"
                                         focusable="false" class="icon icon-arrow" xmlns="http://www.w3.org/2000/svg">
@@ -81,7 +81,7 @@
                                     </svg>
                                 </span>
                             </p>
-                            <p class="category-price">{{product.price}} sum</p>
+                            <p class="category-price">{{product.price1}} sum</p>
                             <div class="product-controls">
                                 <button type="button" class="add-to-cart-btn">Savatga qo‘shish</button>
                             </div>

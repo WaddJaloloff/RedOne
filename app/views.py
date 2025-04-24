@@ -1,5 +1,8 @@
 from django.shortcuts import render
 from .models import *
+import fitz
+from .models import Product, Categories
+
 
 
 # Create your views here.
@@ -7,6 +10,7 @@ def index(request):
     products = Product.objects.filter(is_active=True).select_related('category')[:4]  # tezroq ishlashi uchun
     categories = Categories.objects.filter(product__is_active=True).distinct()
     return render(request, 'home.html', {'products': products, 'categories': categories})
+
 
 
 def products(request):
