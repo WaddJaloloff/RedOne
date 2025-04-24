@@ -64,10 +64,23 @@
                     <img src="{{product.image.url}}" alt="">
                 </div>
                 <div class="detail-right">
-                <p class="detail-category">{{product.category}}</p>
+                <p class="detail-category">{{product.category_uz}}</p>
                 <h3 class="detail-heading">{{product.name_uz}}</h3>
-                <p class="detail-price">{{product.formatted_price1 }} so'm</p>
                 <p class="detail-desc">{{product.about_uz}}</p>
+                <div class="sizes">
+                    <div class="size-box active" onclick="selectSize(this, '{{ product.formatted_price1 }}')">
+                      {{ product.size1 }}
+                    </div>
+                  
+                    {% if product.size2 %}
+                      <div class="size-box" onclick="selectSize(this, '{{ product.formatted_price2 }}')">
+                        {{ product.size2 }}
+                      </div>
+                    {% endif %}
+                  </div>
+                  
+                  <p class="price" id="price">{{ product.formatted_price1 }} so‘m</p>
+                  
                 </div>
             </div>
         </div>
@@ -116,6 +129,19 @@
             </div>
         </div>
     </footer>
+    <script>
+        function selectSize(element, price) {
+          // Barcha size-box elementlaridan 'active' klassini olib tashlaymiz
+          document.querySelectorAll('.size-box').forEach(el => el.classList.remove('active'));
+      
+          // Faol tanlangan elementga 'active' klassini qo‘shamiz
+          element.classList.add('active');
+      
+          // Narxni yangilaymiz
+          document.getElementById('price').innerText = price + " so‘m";
+        }
+      </script>
+      
 
 </body>
 

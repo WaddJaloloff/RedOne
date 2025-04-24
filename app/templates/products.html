@@ -61,9 +61,9 @@
             <ul class="products-category">
                 <!-- Category shablon -->
                 {% for category in categories %}
-                <li class="category-item" id="{{ category.category }}">
+                <li class="category-item" id="{{ category.category_uz }}">
                     <!-- Category ismi -->
-                    <h2 class="category-heading">{{ category.category }}</h2>
+                    <h2 class="category-heading">{{ category.category_uz }}</h2>
                     <div class="product-wrapper">
                         {% for product in products %}
                         {% if product.category == category %}

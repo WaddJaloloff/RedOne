@@ -3,9 +3,10 @@ from django.db import models
 # Create your models here.
 
 class Categories(models.Model):
-    category = models.CharField(max_length=30)
+    category_uz = models.CharField(max_length=30)
+    category_ru = models.CharField(max_length=30)
     def __str__(self):
-        return self.category
+        return self.category_uz
     
 
 class Product(models.Model):
@@ -32,3 +33,10 @@ class Product(models.Model):
         if self.price2:
             return f"{self.price2:,}".replace(",", " ")
         return ""
+    
+# def save(self, *args, **kwargs):
+#             if len(self.name_uz) > 20:
+#                 self.name_uz = self.name_uz[:20].rsplit(' ', 1)[0]
+#             if len(self.name_ru) > 20:
+#                 self.name_ru = self.name_ru[:20].rsplit(' ', 1)[0]
+#             super().save(*args, **kwargs)
