@@ -516,6 +516,14 @@ a:hover {
     text-align: center;
   }
   
+  .detail-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
   .detail-price {
     font-size: 15px;
     line-height: 16px;
