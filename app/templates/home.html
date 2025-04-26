@@ -1,4 +1,9 @@
 {% load static %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,6 +26,9 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/7.3.2/css/flag-icons.min.css" integrity="sha512-+WVTaUIzUw5LFzqIqXOT3JVAc5SrMuvHm230I9QAZa6s+QRk8NDPswbHo2miIZj3yiFyV9lAgzO1wVrjdoO4tw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -34,29 +42,47 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link" href="{% url 'index' %}">Bosh Sahifa</a>
+            <a class="nav-link" href="{% url 'index' %}">{% trans "Bosh sahifa" %}</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
-              Kategoriyalar
+              {% trans "Kategoriyalar" %}
             </a>
             <div class="dropdown-menu">
               {%for category in categories%}
-              <a class="dropdown-item" href="{% url 'products' %}#{{category}}">{{category}}</a>
+                <a class="dropdown-item" href="{% url 'products' %}#{{category}}">{{category}}</a>
               {% endfor %}
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#about">Haqimizda</a>
+            <a class="nav-link" href="#about">
+              {% trans "Haqimizda" %}
+            </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'products' %}">Mahsulotlar</a>
+            <a class="nav-link" href="{% url 'products' %}">
+              {% trans "Mahsulotlar" %}
+            </a>
           </li>
 
-          <select name="lang" id="">
-            <option value="uz">Uz</option>
-            <option value="ru">Рус</option>
-          </select>
+          <div class="btn-group">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              {% if LANGUAGE_CODE == 'ru' %}
+                Ru
+              {% else %}
+                Uz
+              {% endif %}
+              <span class="fi fi-{{LANGUAGE_CODE}}"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+              {% for language in LANGUAGES %}
+                {% if language.0 != LANGUAGE_CODE %}
+                  <li><a class="dropdown-item bg-dark" href="/{{language.0}}">{{ language.0|upper }}</a></li> 
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </div>
+          
         </ul>
       </div>
     </nav>
@@ -66,7 +92,8 @@
     </div>
     <div class="categories-and-Products">
       <div class="category">
-        <h2>Kategoriyalar
+        <h2>
+          {% trans "Kategoriyalar" %}
         </h2>
         <div class="container" style="margin: auto; width: 100%; max-width: 90%;">
           <div class="slider">
