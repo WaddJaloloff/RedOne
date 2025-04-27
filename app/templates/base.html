@@ -1,276 +1,330 @@
-<!-- base.html -->
 {% load static %}
 {% load i18n %}
 {% get_current_language as LANGUAGE_CODE %}
 {% get_available_languages as LANGUAGES %}
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE }}">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}RedOne{% endblock %}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}RedOne{% endblock %}</title>
 
-  <!-- Common CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="{% static 'app/style.css' %}">
-  <link rel="stylesheet" href="{% static 'app/footer.css' %}">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/7.3.2/css/flag-icons.min.css" crossorigin="anonymous">
+    <!-- Common CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'app/style.css' %}">
+    <link rel="stylesheet" href="{% static 'app/footer.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/7.3.2/css/flag-icons.min.css"
+        crossorigin="anonymous">
 
-  {% block extra_css %}{% endblock %}
+    {% block extra_css %}{% endblock %}
 </head>
-<body>
-  <div class="base">
-    <!-- HEADER -->
-    <nav class="navbar navbar-expand-lg navbar-dark custom-navbar sticky-top justify-between">
-      <a class="navbar-brand" href="#">RedOne</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">{% trans "Bosh sahifa" %}</a></li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">{% trans "Kategoriyalar" %}</a>
-            <div class="dropdown-menu">
-              {% for category in categories %}
-                <a class="dropdown-item" href="{% url 'products' %}#{{ category }}">{{ category }}</a>
-              {% endfor %}
-            </div>
-          </li>
-          <li class="nav-item"><a class="nav-link" href="#about">{% trans "Haqimizda" %}</a></li>
-          <li class="nav-item"><a class="nav-link" href="{% url 'products' %}">{% trans "Mahsulotlar" %}</a></li>
-          <!-- Cart Icon -->
-          <li class="nav-item ">
-            <a class="nav-link position-relative" href="#" data-toggle="modal" data-target="#cartModal">
-              <i class="fas fa-shopping-cart"></i>
-              <span id="cart-count" class="badge badge-danger position-absolute" style="top:0; right:0;">0</span>
-            </a>
-          </li>
-          
-        </ul>
-        <div class="btn-group ml-3">
-            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-              {% if LANGUAGE_CODE == 'ru' %}
-                Ru
-              {% else %}
-                Uz
-              {% endif %}
-              <span class="fi fi-{{LANGUAGE_CODE}}"></span>
-            </button>
-            <ul class="dropdown-menu dropdown-menu-end">
-              {% for language in LANGUAGES %}
-                {% if language.0 != LANGUAGE_CODE %}
-                  <li><a class="dropdown-item bg-dark" href="/{{language.0}}">{{ language.0|upper }}</a></li> 
-                {% endif %}
-              {% endfor %}
-            </ul>
-          </div>
-      </div>
-    </nav>
 
-    <!-- CART MODAL -->
-    <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="cartModalLabel">Savat</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
+<body>
+    <div class="base">
+        <!-- HEADER -->
+        <nav class="navbar navbar-expand-lg navbar-dark custom-navbar sticky-top">
+            <a class="navbar-brand" href="#">RedOne</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
+                <span class="navbar-toggler-icon"></span>
             </button>
-          </div>
-          <div class="modal-body">
-            <ul id="cart-items" class="list-group"></ul>
-            <div class="mt-3">
-              <input id="customer-phone" type="text" class="form-control" placeholder="Telefon raqamingizni kiriting">
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">{% trans "Bosh sahifa" %}</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">{% trans "Kategoriyalar"
+                            %}</a>
+                        <div class="dropdown-menu">
+                            {% for category in categories %}
+                            <a class="dropdown-item" href="{% url 'products' %}#{{ category }}">{{ category }}</a>
+                            {% endfor %}
+                        </div>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'index' %}#about">{% trans "Haqimizda" %}</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'products' %}">{% trans "Mahsulotlar" %}</a>
+                    </li>
+                    <!-- Cart Icon -->
+                    <li class="nav-item">
+                        <a class="nav-link position-relative" href="#" data-bs-toggle="modal"
+                            data-bs-target="#cartModal">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span id="cart-count" class="badge badge-danger position-absolute"
+                                style="top:0; left:0;">0</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="btn-group ml-3">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown">
+                        {{ LANGUAGE_CODE|upper }} <span class="fi fi-{{ LANGUAGE_CODE }}"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        {% for code, name in LANGUAGES %}
+                        {% if code != LANGUAGE_CODE %}
+                        <li><a class="dropdown-item" href="/{{ code }}{{ request.path }}">{{ code|upper }}</a></li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
             </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Yopish</button>
-            <button type="button" class="btn btn-primary" onclick="submitOrder()">Buyurtma yuborish</button>
-          </div>
+        </nav>
+
+        <!-- CART MODAL -->
+        <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel"
+            aria-hidden="true">
+            <div id="cartModalDialog" class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="cartModalLabel">{% trans "Savat" %}</h5>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <ul id="cart-items" class="list-group">
+                            <div id="counter-controls-{{ product.id }}" class="counter-controls d-none">
+                                <button type="button" onclick="decrement('{{ product.id }}')"
+                                    class="btn btn-sm btn-outline-secondary">-</button>
+                                <span id="counter-{{ product.id }}">0</span>
+                                <button type="button" onclick="increment('{{ product.id }}')"
+                                    class="btn btn-sm btn-outline-secondary">+</button>
+                            </div>
+                        </ul>
+                        <div class="mt-3">
+                            <input id="customer-phone" type="text" class="form-control"
+                                placeholder="Bog'lanish uchun telefon raqamingizni qoldiring">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Yopish</button>
+                        <button type="button" class="btn btn-primary" onclick="submitOrder()">Buyurtma yuborish</button>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
+
+        <!-- MAIN CONTENT -->
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col">
+                        <h4>tashkilot</h4>
+                        <ul class="footer-ul">
+                            <li><a href="#about">biz haqimizda</a></li>
+                            <li><a href="#">hizmatlarimiz</a></li>
+                            <li><a href="#">siyosat</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-col">
+                        <h4>yordam</h4>
+                        <ul class="footer-ul">
+                            <li><a href="#">Telefon</a></li>
+                            <li><a href="#">Telegram</a></li>
+                            <li><a href="#">Instagram</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>online dokon</h4>
+                        <ul class="footer-ul">
+                            <li><a href="#">Mahsulotlar</a></li>
+                            <li><a href="#">kategoriyalar</a></li>
+                            <li><a href="#">Yuqoriga</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>bizga qo'shiling</h4>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-telegram"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fas fa-phone"></i></a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
 
-    <!-- MAIN CONTENT -->
-    <main>
-      {% block content %}{% endblock %}
-    </main>
+    <style>
+        #cart-items li {
+            animation: fadeIn 0.3s ease;
+        }
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="container">
-          <div class="row">
-            <div class="footer-col">
-              <h4>tashkilot</h4>
-              <ul class="footer-ul">
-                <li><a href="#about">biz haqimizda</a></li>
-                <li><a href="#">hizmatlarimiz</a></li>
-                <li><a href="#">siyosat</a></li>
-              </ul>
-            </div>
-    
-            <div class="footer-col">
-              <h4>yordam</h4>
-              <ul class="footer-ul">
-                <li><a href="#">Telefon</a></li>
-                <li><a href="#">Telegram</a></li>
-                <li><a href="#">Instagram</a></li>
-              </ul>
-            </div>
-            <div class="footer-col">
-              <h4>online dokon</h4>
-              <ul class="footer-ul">
-                <li><a href="#">Mahsulotlar</a></li>
-                <li><a href="#">kategoriyalar</a></li>
-                <li><a href="#">Yuqoriga</a></li>
-              </ul>
-            </div>
-            <div class="footer-col">
-              <h4>bizga qo'shiling</h4>
-              <div class="social-links">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-telegram"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fas fa-phone"></i></a>
-    
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
-  </div>
+        .price {
+            width: 150px;
+        }
 
-  <style>
-    #cartModalDialog {
-      transform: translateX(-100%);
-      transition: transform 0.3s ease-in-out;
-    }
-    
-    #cartModal.show #cartModalDialog {
-      transform: translateX(0);
-    }
-    
-    @media (max-width: 768px) {
-      #cartModalDialog {
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100%;
-        z-index: 1050;
-      }
+        .counter-span {
+        display: inline-block;
+        width: 30px;        
+        text-align: center;
+        }
 
-      .nav-item {
-        display: flex;
-        justify-content: space-between;
-      }
+        @media (max-width: 768px) {
+        #cartModalDialog {
+            max-width: 95%;
+            margin: 1rem auto;
+        }
+
+        #cart-items li {
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: center;
+            justify-content: center;
+        }
+
+        #cart-items li img {
+            margin-bottom: 10px;
+        }
+
+        #cart-items .d-flex.justify-content-between {
+            flex-direction: column;
+            align-items: flex-start;
+            width: 100%;
+        }
+
+        #cart-items .btn-outline-secondary, 
+        #cart-items .btn-danger {
+            margin-top: 8px;
+            width: 50px;
+        }
+
+        #customer-phone {
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .modal-footer button {
+            width: 100%;
+            margin-top: 5px;
+        }
     }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
-    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+    {% block extra_js %}
+    <script>
+        let cart = [];
 
-  <!-- Common JS -->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-  {% block extra_js %}
-  <script>
-    let cart = [];
-    
-    function addToCart(id, name, price) {
-      const controls = document.getElementById('controls-' + id);
-      const addButton = controls.querySelector('.add-to-cart-btn');
-      const counterControls = controls.querySelector('.counter-controls');
-    
-      addButton.classList.add('d-none');
-      counterControls.classList.remove('d-none');
-    
-      // Проверяем если товара ещё нет — добавляем 1 шт.
-      let item = cart.find(item => item.id === id);
-      if (!item) {
-        cart.push({ id, name, price, qty: 1 });
-      }
-      updateCartUI();
-      updateCounter(id);
-    }
+        function addToCart(id, name, price, image) {
+            const existing = cart.find(item => item.id === id);
+            if (existing) {
+                existing.qty++;
+            } else {
+                cart.push({ id, name, price, image, qty: 1 });
+            }
+            updateCartUI();
+            $('#cartModal').modal('show');
+        }
 
-    $('#cartModal').on('show.bs.modal', function () {
-  // Если модалка открывается, она будет плавно выезжать.
-  $('#cartModalDialog').css('transform', 'translateX(0)');
-});
+        function increment(id) {
+            const it = cart.find(i => i.id === id);
+            if (it) it.qty++;
+            updateCartUI();
+        }
 
-$('#cartModal').on('hidden.bs.modal', function () {
-  // После закрытия, модалка будет снова скрыта.
-  $('#cartModalDialog').css('transform', 'translateX(-100%)');
-});
+        function decrement(id) {
+            const idx = cart.findIndex(i => i.id === id);
+            if (idx === -1) return;
+            cart[idx].qty--;
+            if (cart[idx].qty <= 0) cart.splice(idx, 1);
+            updateCartUI();
+        }
 
-    
-    function increment(id) {
-      const item = cart.find(i => i.id === id);
-      if (item) {
-        item.qty++;
-      } else {
-        alert('Avval "Savatga qo‘shish" tugmasini bosing');
+        function removeItem(id) {
+            cart = cart.filter(item => item.id !== id);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const container = document.getElementById('cart-items');
+            container.innerHTML = '';
+            let total = 0;
+
+            cart.forEach(item => {
+                const line = document.createElement('li');
+                line.className = 'list-group-item d-flex justify-content-between align-items-center';
+
+                line.innerHTML = `
+              <div class="d-flex justify-content-between w-100 align-items-center">
+                <img src="${item.image}" width="50" class="mr-3" />
+                <div class="flex-grow-1">
+                  <strong>${item.name}</strong><br>
+                  <small>{% trans "Narxi" %}: ${item.price} so'm </small>
+                </div>
+                <div class="d-flex align-items-center">
+                  <button class="btn btn-sm btn-outline-secondary" onclick="decrement('${item.id}')">−</button>
+                  <span class="counter-span">${item.qty}</span>
+                  <button class="btn btn-sm btn-outline-secondary" onclick="increment('${item.id}')">+</button>
+                </div>
+                 <div class="ml-3">
+                <h6 class="price">${item.price * item.qty} so'm</h6>
+        </div>
+                <button class="btn btn-sm btn-danger " onclick="removeItem('${item.id}')">X</button>
+              </div>
+            `;
+
+                container.appendChild(line);
+                total += item.price * item.qty;
+            });
+
+            if (cart.length) {
+                const sumLine = document.createElement('div');
+                sumLine.className = 'mt-3 text-right';
+                sumLine.innerHTML = `<h5>Jami: ${total} so'm</h5>`;
+                container.appendChild(sumLine);
+            }
+
+            document.getElementById('cart-count').textContent =
+                cart.reduce((s, i) => s + i.qty, 0);
+        }
+
+        function submitOrder() {
+    const phone = document.getElementById('customer-phone').value.trim();
+    if (!phone) {
+        alert("Iltimos, telefon raqamingizni kiriting!");
         return;
-      }
-      updateCartUI();
-      updateCounter(id);
     }
-    
-    function decrement(id) {
-      const item = cart.find(i => i.id === id);
-      if (item && item.qty > 1) {
-        item.qty--;
-      } else if (item && item.qty === 1) {
-        // Agar qty 1 -> 0 bo'lsa, tozalaymiz
-        cart = cart.filter(i => i.id !== id);
-        const controls = document.getElementById('controls-' + id);
-        controls.querySelector('.add-to-cart-btn').classList.remove('d-none');
-        controls.querySelector('.counter-controls').classList.add('d-none');
-      }
-      updateCartUI();
-      updateCounter(id);
+    if (cart.length === 0) {
+        alert("Savat bo'sh!");
+        return;
     }
-    
-    function updateCounter(id) {
-      const item = cart.find(i => i.id === id);
-      const counter = document.getElementById('counter-' + id);
-      if (item) {
-        counter.textContent = item.qty;
-      }
-    }
-    
-    function updateCartUI() {
-      const list = document.getElementById('cart-items');
-      list.innerHTML = '';
-      cart.forEach(item => {
-        const li = document.createElement('li');
-        li.className = 'list-group-item d-flex justify-content-between align-items-center';
-        li.innerHTML = `
-          <div>${item.name}</div>
-          <div>x${item.qty}</div>
-        `;
-        list.appendChild(li);
-      });
-      document.getElementById('cart-count').textContent = cart.reduce((sum, i) => sum + i.qty, 0);
-    }
-    
-    function submitOrder() {
-      const phone = document.getElementById('customer-phone').value;
-      console.log('Order submitted', { phone, cart });
-      alert('Buyurtma qabul qilindi!');
-      cart = [];
-      updateCartUI();
-      document.querySelectorAll('.product-controls').forEach(control => {
-        control.querySelector('.add-to-cart-btn').classList.remove('d-none');
-        control.querySelector('.counter-controls').classList.add('d-none');
-      });
-      $('#cartModal').modal('hide');
-    }
+    console.log('Order:', { phone, cart });
+    alert('Buyurtma qabul qilindi!');
+    cart = [];
+    updateCartUI();
+    $('#cartModal').modal('hide');
+}
     </script>
-    
-  {% endblock %}
+    {% endblock %}
+
 </body>
+
 </html>

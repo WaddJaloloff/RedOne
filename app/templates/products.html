@@ -2,53 +2,40 @@
 {% load i18n %}
 {% block title %}Mahsulotlar{% endblock %}
 {% block content %}
-
-        <div class="container">
-            <ul class="products-category">
-                <!-- Category shablon -->
-                {% for category in categories %}
-                <li class="category-item" id="{{ category.category_uz }}">
-                    <!-- Category ismi -->
-                    <h2 class="category-heading">{{ category.category_uz }}</h2>
-                    <div class="product-wrapper">
-                        {% for product in products %}
-                        {% if product.category == category %}
-                        <div class="category-product">
-                          <a href="{% url 'product_detail' product.id %}">
-                            <div class="category-img-wrapper">
-                                <img src="{{product.image.url}}" alt="{{product.name_uz}}">
-                            </div>
-                            <p class="category-p">{{product.name_uz}}
-                                <span class="icon-wrap">
-                                    <svg style="width: 15px;" viewBox="0 0 14 10" fill="none" aria-hidden="true"
-                                        focusable="false" class="icon icon-arrow" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z"
-                                            fill="currentColor"></path>
-                                    </svg>
-                                </span>
-                            </p>
-                            <p class="category-price">{{product.price1}} sum</p>
-                          </a>
-                          <div class="product-controls" id="controls-{{ product.id }}">
-                            <button onclick="addToCart('{{ product.id }}', '{{ product.name_uz }}', '{{ product.price1 }}')" type="button" class="add-to-cart-btn">Savatga qo‘shish</button>
-                          
-                            <div class="counter-controls d-none">
-                              <button type="button" onclick="decrement('{{ product.id }}')" class="btn btn-sm btn-outline-secondary">-</button>
-                              <span id="counter-{{ product.id }}">0</span>
-                              <button type="button" onclick="increment('{{ product.id }}')" class="btn btn-sm btn-outline-secondary">+</button>
-                            </div>
-                          </div>
-                          
+<div class="container">
+    <ul class="products-category">
+        {% for category in categories %}
+        <li class="category-item" id="{{ category.category_uz }}">
+            <h2 class="category-heading">{{ category.category_uz }}</h2>
+            <div class="product-wrapper">
+                {% for product in products %}
+                {% if product.category == category %}
+                <div class="category-product">
+                    <a href="{% url 'product_detail' product.id %}">
+                        <div class="category-img-wrapper">
+                            <img src="{{product.image.url}}" alt="{{product.name_uz}}">
                         </div>
-                        {% endif %}
-                        {% endfor %}
-
+                        <p class="category-p">{{product.name_uz}}
+                            <span class="icon-wrap">
+                                <svg style="width: 15px;" viewBox="0 0 14 10" fill="none" aria-hidden="true"
+                                    focusable="false" class="icon icon-arrow" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z"
+                                        fill="currentColor"></path>
+                                </svg>
+                            </span>
+                        </p>
+                        <p class="category-price">{{product.price1}} sum</p>
+                    </a>
+                    <div class="product-controls" id="controls-{{ product.id }}">
+                        <button onclick="addToCart('{{ product.id }}', '{{ product.name_uz }}', '{{ product.price1 }}', '{{ product.image.url }}')" type="button" class="add-to-cart-btn">Savatga qo‘shish</button>
                     </div>
-                </li>
+                </div>
+                {% endif %}
                 {% endfor %}
-            </ul>
-        </div>
-
-        
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
 {% endblock %}
