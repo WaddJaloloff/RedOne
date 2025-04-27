@@ -9,10 +9,11 @@
     </div>
     <div class="categories-and-Products">
       <div class="category">
-        <h2>
-          {% trans "Kategoriyalar" %}
-        </h2>
-        <div class="container" style="margin: auto; width: 100%; max-width: 90%;">
+       
+        <div class="container">
+          <h2>
+            {% trans "Kategoriyalar" %}
+          </h2>
           <div class="slider">
             <div class="item">
               <img src="/media/category_hair_mobile.webp" alt="Image 2">
@@ -116,7 +117,7 @@
         </div> 
  
           {% endfor %} -->
-          <ul style="margin: 15px 0;" class="slider">
+          <ul class="slider">
             {% for product in products %}
             <a href="{% url 'product_detail' product.id %}" class="item-product" >
               <div class="item-img-wrapper">
