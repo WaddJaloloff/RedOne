@@ -1,6 +1,7 @@
 <!-- Home html -->
 {% extends 'base.html' %}
 {% load i18n %}
+
 {% block title %}Mahsulotlar{% endblock %}
 {% block content %}
 
@@ -17,7 +18,7 @@
           <div class="slider">
             <div class="item">
               <img src="/media/category_hair_mobile.webp" alt="Image 2">
-              <p> Hair Styling
+              <p> {% trans "Hair Styling" %}
                 <span class="icon-wrap">
                   <svg style="width: 15px;" viewBox="0 0 14 10" fill="none" aria-hidden="true" focusable="false"
                     class="icon icon-arrow" xmlns="http://www.w3.org/2000/svg">
