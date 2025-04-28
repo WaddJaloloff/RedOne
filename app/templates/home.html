@@ -99,7 +99,7 @@
       </div>
 
       <div class="Products">
-        <h2>Mashhur
+        <h2>{% trans 'Mashhur' %}
         </h2>
         <div class="container">
           <!-- {% for product in products %} 
@@ -146,7 +146,7 @@
         <div style=" display: flex; justify-content: center;">
           <a href="{% url 'products' %}">
             <button class="view-all" type="submit">
-              Yana ko'rish
+              {% trans 'Yana ko'rish' %}
             </button>
           </a>
         </div>
@@ -172,15 +172,12 @@
             Red One
           </p>
           <h2 class="image-with-text__heading about-heading">
-            Biz haqimizda!
+            {% trans 'Biz haqimizda!' %}
           </h2>
           <div class="image-with-text__text">
-            <p class="about-text">Biz sizga taqdim etayotgan RedOne — dunyo bo‘yicha mashhur Turkiyada ishlab
-              chiqariluvchi erkaklar uchun soch va tashqi ko‘rinish parvarishiga ixtisoslashgan professional brenddir.
-              RedOne mahsulotlari yuqori sifati, kuchli fiksatsiyasi, yoqimli hidi va zamonaviy dizayni bilan ajralib
-              turadi. </p>
-          </div><a href="/collections/kray" class="button button--secondary">
-            Harid qilish
+            <p class="about-text">{% trans 'Biz sizga taqdim etayotgan RedOne — dunyo bo‘yicha mashhur Turkiyada ishlab chiqariluvchi erkaklar uchun soch va tashqi ko‘rinish parvarishiga ixtisoslashgan professional brenddir. RedOne mahsulotlari yuqori sifati, kuchli fiksatsiyasi, yoqimli hidi va zamonaviy dizayni bilan ajralib turadi. ' %}</p>
+          </div><a href="{% urls 'products' %}" class="button button--secondary">
+            {% trans 'Harid qilish' %}
           </a>
         </div>
       </div>
@@ -188,12 +185,12 @@
   </div>
 
   <div class="Products">
-    <h2>Yangi Mahsulotlar
+    <h2>{% trans 'Yangi Mahsulotlar' %}
     </h2>
     <div class="container">
       <ul style="margin: 15px 0;" class="slider">
 
-        {% for product in products %}
+        {% for product in last_products %}
         <a href="{% url 'product_detail' product.id %}" class="item-product" >
           <div class="item-img-wrapper">
             <img src="{{product.image.url}}" alt="Image 5">
@@ -210,7 +207,7 @@
 
 
           </p>
-          <p style="color: #777; font-size: 12px;">{{product.price1}} sum</p>
+          <p style="color: #777; font-size: 12px;">{{product.price1}} {% trans 'sum' %}</p>
         </a>
         {% endfor %}
       </ul>
@@ -218,7 +215,7 @@
   <div style=" display: flex; justify-content: center;">
     <a href="{% url 'products' %}">
       <button class="view-all" type="submit">
-        Yana ko'rish
+        {% trans 'Yana ko'rish' %}
       </button>
     </a>
   </div>

@@ -9,16 +9,14 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-28 17:59+0500\n"
-"PO-Revision-Date: 2025-04-28 17:51+0000\n"
+"PO-Revision-Date: 2025-04-28 18:12+0000\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
-"(n%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 "X-Translated-Using: django-rosetta 0.10.2\n"
 
 #: .\app\templates\base.html:37
@@ -47,7 +45,7 @@ msgstr "закрыть"
 
 #: .\app\templates\base.html:124
 msgid "tashkilot"
-msgstr ""
+msgstr "организация"
 
 #: .\app\templates\base.html:126
 #, fuzzy
@@ -57,27 +55,27 @@ msgstr "О нас"
 
 #: .\app\templates\base.html:127
 msgid "hizmatlarimiz"
-msgstr ""
+msgstr "наши услуги"
 
 #: .\app\templates\base.html:128
 msgid "siyosat"
-msgstr ""
+msgstr "политика"
 
 #: .\app\templates\base.html:135
 msgid "Telefon"
-msgstr ""
+msgstr "Телефон"
 
 #: .\app\templates\base.html:136
 msgid "Telegram"
-msgstr ""
+msgstr "Телеграм "
 
 #: .\app\templates\base.html:137
 msgid "Instagram"
-msgstr ""
+msgstr "Инстаграм"
 
 #: .\app\templates\base.html:141
 msgid "online dokon"
-msgstr ""
+msgstr "интернет-магазин"
 
 #: .\app\templates\base.html:144
 #, fuzzy
@@ -87,11 +85,11 @@ msgstr "Категории"
 
 #: .\app\templates\base.html:145
 msgid "Yuqoriga"
-msgstr ""
+msgstr "Вверх"
 
 #: .\app\templates\base.html:149
 msgid "bizga qo'shiling"
-msgstr ""
+msgstr "Присоединяйтесь к нам"
 
 #: .\app\templates\base.html:284
 msgid "Narxi"
@@ -102,6 +100,5 @@ msgid "Hair Styling"
 msgstr ""
 
 #, fuzzy
-#~| msgid "Kategoriyalar"
 #~ msgid "category"
 #~ msgstr "Категории"
