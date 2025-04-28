@@ -388,8 +388,6 @@ aspect-ratio: 1 / 1;
 }
 
 .product-controls {
-  display: flex;
-  justify-content: center;
   margin-top: 12px;
 }
 

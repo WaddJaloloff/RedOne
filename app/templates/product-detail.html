@@ -3,47 +3,65 @@
 {% load i18n %}
 {% block title %}Mahsulotlar{% endblock %}
 {% block content %}
-       <section class="detail">
-        <div class="container">
-            <div class="detail_container">
-                <div class="detail-left">
-                    <img src="{{product.image.url}}" alt="">
-                </div>
-                <div class="detail-right">
-                <p class="detail-category">{{product.category_uz}}</p>
-                <h3 class="detail-heading">{{product.name_uz}}</h3>
-                <p class="detail-desc">{{product.about_uz}}</p>
-                <div class="sizes">
-                    <div class="size-box active" onclick="selectSize(this, '{{ product.formatted_price1 }}')">
-                      {{ product.size1 }}
-                    </div>
-                  
-                    {% if product.size2 %}
-                      <div class="size-box" onclick="selectSize(this, '{{ product.formatted_price2 }}')">
-                        {{ product.size2 }}
-                      </div>
-                    {% endif %}
-                  </div>
-                  
-                  <p class="price" id="price">{{ product.formatted_price1 }} so‘m</p>
-                  
-                </div>
-            </div>
-        </div>
-       </section>
+<section class="detail">
+  <div class="container">
+    <div class="detail_container">
+      <div class="detail-left">
+        <img src="{{product.image.url}}" alt="">
+      </div>
+      <div class="detail-right">
+        <p class="detail-category">{{product.category_uz}}</p>
+        <h3 class="detail-heading">{{product.name_uz}}</h3>
+        <p class="detail-desc">{{product.about_uz}}</p>
+        <div class="sizes">
+          <div class="size-box active" data-raw-price="{{ product.price1 }}"
+            onclick="selectSize(this, '{{ product.formatted_price1 }}')">
+            {{ product.size1 }}
+          </div>
 
+          {% if product.size2 %}
+          <div class="size-box" data-raw-price="{{ product.price2 }}"
+            onclick="selectSize(this, '{{ product.formatted_price2 }}')">
+            {{ product.size2 }}
+          </div>
+          {% endif %}
+        </div>
+
+        <p class="price" id="price" data-price="{{ product.price1|default:0 }}">
+          {{ product.formatted_price1 }} so‘m
+        </p>
+
+          <div class="product-controls" id="controls-{{ product.id }}">
+            <button onclick="addToCart(
+              '{{ product.id }}',
+              '{{ product.name_uz }}',
+              getSelectedPrice(),
+              '{{ product.image.url }}'
+            )" class="add-to-cart-btn">
+              Savatga qo‘shish
+            </button>
+
+          </div>
+
+      </div>
     </div>
-    <script>
-        function selectSize(element, price) {
-          // Barcha size-box elementlaridan 'active' klassini olib tashlaymiz
-          document.querySelectorAll('.size-box').forEach(el => el.classList.remove('active'));
-      
-          // Faol tanlangan elementga 'active' klassini qo‘shamiz
-          element.classList.add('active');
-      
-          // Narxni yangilaymiz
-          document.getElementById('price').innerText = price + " so‘m";
-        }
-      </script>
+  </div>
+</section>
+
+</div>
+<script>
+  function selectSize(el, formattedPrice) {
+    document.querySelectorAll('.size-box').forEach(x => x.classList.remove('active'));
+    el.classList.add('active');
+    const priceTag = document.getElementById('price');
+    priceTag.innerText = formattedPrice + " so‘m";
+    priceTag.dataset.price = el.dataset.rawPrice;
+  }
+
+  function getSelectedPrice() {
+    const raw = document.getElementById('price').dataset.price;
+    return parseFloat(raw) || 0;
+  }
+</script>
 
 {% endblock %}
