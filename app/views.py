@@ -3,13 +3,11 @@ from .models import *
 from .models import Product, Categories
 
 
-
-# Create your views here.
 def index(request):
-    last_products = Product.objects.filter(is_active=True).select_related('category')[-4:]
+    last_products = Product.objects.filter(is_active=True).select_related('category').order_by('-id')[:4]
     top_products = Top_product.objects.filter(is_active=True)[:4]
     # Maxsus kesilgan nomlarni olish
-    for product in products:
+    for product in last_products:
         product.name_uz = product.name_uz[:20].rsplit(' ', 1)[0] if len(product.name_uz) > 20 else product.name_uz
         product.name_ru = product.name_ru[:20].rsplit(' ', 1)[0] if len(product.name_ru) > 20 else product.name_ru
 

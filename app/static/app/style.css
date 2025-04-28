@@ -411,6 +411,7 @@ aspect-ratio: 1 / 1;
   transition: background-color 0.3s ease;
 }
 
+
 .add-to-cart-btn:hover {
   background-color: #333;
 }

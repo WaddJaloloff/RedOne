@@ -25,7 +25,7 @@
                                 </svg>
                             </span>
                         </p>
-                        <p class="category-price">{{product.price1}} sum</p>
+                        <p class="category-price">{{product.price1}}  {% trans "sum" %}</p>
                     </a>
                     <div class="product-controls" id="controls-{{ product.id }}">
                         <button onclick="addToCart('{{ product.id }}', '{{ product.name_uz }}', '{{ product.price1 }}', '{{ product.image.url }}')" type="button" class="add-to-cart-btn">Savatga qo‘shish</button>

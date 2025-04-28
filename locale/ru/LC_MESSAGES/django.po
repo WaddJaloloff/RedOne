@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-28 17:59+0500\n"
-"PO-Revision-Date: 2025-04-28 18:12+0000\n"
+"POT-Creation-Date: 2025-04-28 20:05+0500\n"
+"PO-Revision-Date: 2025-04-28 20:49+0000\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -21,7 +21,7 @@ msgstr ""
 
 #: .\app\templates\base.html:37
 msgid "Bosh sahifa"
-msgstr "Домашняя страница"
+msgstr "Главная"
 
 #: .\app\templates\base.html:39 .\app\templates\home.html:16
 msgid "Kategoriyalar"
@@ -43,14 +43,17 @@ msgstr "Корзина"
 msgid "Yopish"
 msgstr "закрыть"
 
+#: .\app\templates\base.html:107
+msgid "Buyurtmani yuborish"
+msgstr "Заказать"
+
 #: .\app\templates\base.html:124
 msgid "tashkilot"
 msgstr "организация"
 
 #: .\app\templates\base.html:126
-#, fuzzy
 #| msgid "Haqimizda"
-msgid "biz haqimizda"
+msgid "Biz haqimizda"
 msgstr "О нас"
 
 #: .\app\templates\base.html:127
@@ -60,6 +63,10 @@ msgstr "наши услуги"
 #: .\app\templates\base.html:128
 msgid "siyosat"
 msgstr "политика"
+
+#: .\app\templates\base.html:133
+msgid "Yordam"
+msgstr "Помощь"
 
 #: .\app\templates\base.html:135
 msgid "Telefon"
@@ -78,7 +85,6 @@ msgid "online dokon"
 msgstr "интернет-магазин"
 
 #: .\app\templates\base.html:144
-#, fuzzy
 #| msgid "Kategoriyalar"
 msgid "kategoriyalar"
 msgstr "Категории"
@@ -98,6 +104,44 @@ msgstr "Цена"
 #: .\app\templates\home.html:21
 msgid "Hair Styling"
 msgstr ""
+
+#: .\app\templates\home.html:102
+msgid "Mashhur"
+msgstr "Популярный"
+
+#: .\app\templates\home.html:133 .\app\templates\home.html:203
+msgid "Yana ko'rish"
+msgstr "Показать больше"
+
+#: .\app\templates\home.html:159
+#| msgid "Haqimizda"
+msgid "Biz haqimizda!"
+msgstr "О нас"
+
+#: .\app\templates\home.html:162
+msgid ""
+"Biz sizga taqdim etayotgan RedOne — dunyo bo‘yicha mashhur Turkiyada ishlab "
+"chiqariluvchi erkaklar uchun soch va tashqi ko‘rinish parvarishiga "
+"ixtisoslashgan professional brenddir. RedOne mahsulotlari yuqori sifati, "
+"kuchli fiksatsiyasi, yoqimli hidi va zamonaviy dizayni bilan ajralib turadi."
+msgstr ""
+"Представляем вам RedOne — всемирно известный профессиональный бренд, "
+"специализирующийся на средствах по уходу за волосами и волосами для мужчин, "
+"произведенных в Турции. Продукция RedOne отличается высоким качеством, "
+"сильной фиксацией, приятным запахом и современным дизайном."
+
+#: .\app\templates\home.html:165
+msgid "Harid qilish"
+msgstr "Покупки"
+
+#: .\app\templates\home.html:173
+#| msgid "Mahsulotlar"
+msgid "Yangi Mahsulotlar"
+msgstr "Продукция"
+
+#: .\app\templates\home.html:195
+msgid "sum"
+msgstr "сум"
 
 #, fuzzy
 #~ msgid "category"

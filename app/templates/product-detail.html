@@ -1,49 +1,76 @@
 <!-- Product-detail -->
 {% extends 'base.html' %}
 {% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
 {% block title %}Mahsulotlar{% endblock %}
 {% block content %}
-       <section class="detail">
-        <div class="container">
-            <div class="detail_container">
-                <div class="detail-left">
-                    <img src="{{product.image.url}}" alt="">
-                </div>
-                <div class="detail-right">
-                <p class="detail-category">{{product.category_uz}}</p>
-                <h3 class="detail-heading">{{product.name_uz}}</h3>
-                <p class="detail-desc">{{product.about_uz}}</p>
-                <div class="sizes">
-                    <div class="size-box active" onclick="selectSize(this, '{{ product.formatted_price1 }}')">
-                      {{ product.size1 }}
-                    </div>
-                  
-                    {% if product.size2 %}
-                      <div class="size-box" onclick="selectSize(this, '{{ product.formatted_price2 }}')">
-                        {{ product.size2 }}
-                      </div>
-                    {% endif %}
-                  </div>
-                  
-                  <p class="price" id="price">{{ product.formatted_price1 }} so‘m</p>
-                  
-                </div>
-            </div>
-        </div>
-       </section>
+<section class="detail">
+  <div class="container">
+    <div class="detail_container">
+      <div class="detail-left">
+        <img src="{{product.image.url}}" alt="">
+      </div>
+      <div class="detail-right">
 
+
+        {% if LANGUAGE_CODE == "uz" %}
+          <p class="detail-category">{{product.categgory.category_uz}}</p>
+          <h3 class="detail-heading">{{product.name_uz}}</h3>
+          <p class="detail-desc">{{product.about_uz}}</p>
+        {% elif LANGUAGE_CODE == "ru" %}
+          <p class="detail-category">{{product.categgory.category_ru}}</p>
+          <h3 class="detail-heading">{{product.name_ru}}</h3>
+          <p class="detail-desc">{{product.about_ru}}</p>
+        {% else %}
+          <p class="detail-category">{{product.categgory.category_uz}}</p>
+          <h3 class="detail-heading">{{product.name_uz}}</h3>
+          <p class="detail-desc">{{product.about_uz}}</p>
+        {% endif %}
+
+        <div class="sizes">
+          <div class="size-box active" onclick="selectSize(this, '{{ product.formatted_price1 }}')">
+            {{ product.size1 }}
+          </div>
+
+          {% if product.size2 %}
+          <div class="size-box" onclick="selectSize(this, '{{ product.formatted_price2 }}')">
+            {{ product.size2 }}
+          </div>
+          {% endif %}
+        </div>
+
+        <p class="price" id="price">{{ product.formatted_price1 }} {% trans "sum" %}</p>
+
+      </div>
     </div>
-    <script>
-        function selectSize(element, price) {
-          // Barcha size-box elementlaridan 'active' klassini olib tashlaymiz
-          document.querySelectorAll('.size-box').forEach(el => el.classList.remove('active'));
-      
-          // Faol tanlangan elementga 'active' klassini qo‘shamiz
-          element.classList.add('active');
-      
-          // Narxni yangilaymiz
-          document.getElementById('price').innerText = price + " so‘m";
-        }
-      </script>
+  </div>
+</section>
+
+</div>
+{% get_current_language as LANGUAGE_CODE %}
+<script>
+  let language = "{{ LANGUAGE_CODE }}"; // Django'dan tilni olamiz
+
+  function selectSize(element, price) {
+    // Barcha size-box elementlaridan 'active' klassini olib tashlaymiz
+    document.querySelectorAll('.size-box').forEach(el => el.classList.remove('active'));
+
+    // Faol tanlangan elementga 'active' klassini qo‘shamiz
+    element.classList.add('active');
+
+    // Tilga qarab valyuta nomi
+    let currency = "so'm"; // default
+    if (language === "ru") {
+      currency = "сум";
+    } else if (language === "uz") {
+      currency = "so'm";
+    }
+
+    // Narxni yangilaymiz
+    document.getElementById('price').innerText = price + " " + currency;
+  }
+</script>
+
 
 {% endblock %}

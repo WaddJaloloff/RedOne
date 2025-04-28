@@ -1,7 +1,8 @@
 <!-- Home html -->
 {% extends 'base.html' %}
 {% load i18n %}
-
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
 {% block title %}Mahsulotlar{% endblock %}
 {% block content %}
 
@@ -99,27 +100,11 @@
       </div>
 
       <div class="Products">
-        <h2>{% trans 'Mashhur' %}
+        <h2>{% trans "Mashhur" %}
         </h2>
         <div class="container">
-          <!-- {% for product in products %} 
-           
-          <div class="item-product"> 
-            <img src="{{ product.image.url }}" alt="{{ product.name }}"> 
-            <p> {{ product.name }} 
-              <span class="icon-wrap"> 
-                <svg style="width: 15px;" viewBox="0 0 14 10" fill="none" aria-hidden="true" focusable="false" class="icon icon-arrow" xmlns="http://www.w3.org/2000/svg"> 
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z" fill="currentColor"></path> 
-                </svg> 
-              </span> 
-             
-               
-            </p> 
-        </div> 
- 
-          {% endfor %} -->
           <ul class="slider">
-            {% for product in products %}
+            {% for product in top_products %}
             <a href="{% url 'product_detail' product.id %}" class="item-product" >
               <div class="item-img-wrapper">
                 <img src="{{product.image.url}}" alt="Image 5">
@@ -146,7 +131,7 @@
         <div style=" display: flex; justify-content: center;">
           <a href="{% url 'products' %}">
             <button class="view-all" type="submit">
-              {% trans 'Yana ko'rish' %}
+              {% trans "Yana ko'rish" %}
             </button>
           </a>
         </div>
@@ -172,12 +157,13 @@
             Red One
           </p>
           <h2 class="image-with-text__heading about-heading">
-            {% trans 'Biz haqimizda!' %}
+            {% trans "Biz haqimizda!" %}
           </h2>
           <div class="image-with-text__text">
-            <p class="about-text">{% trans 'Biz sizga taqdim etayotgan RedOne — dunyo bo‘yicha mashhur Turkiyada ishlab chiqariluvchi erkaklar uchun soch va tashqi ko‘rinish parvarishiga ixtisoslashgan professional brenddir. RedOne mahsulotlari yuqori sifati, kuchli fiksatsiyasi, yoqimli hidi va zamonaviy dizayni bilan ajralib turadi. ' %}</p>
-          </div><a href="{% urls 'products' %}" class="button button--secondary">
-            {% trans 'Harid qilish' %}
+            <p class="about-text">{% trans "Biz sizga taqdim etayotgan RedOne — dunyo bo‘yicha mashhur Turkiyada ishlab chiqariluvchi erkaklar uchun soch va tashqi ko‘rinish parvarishiga ixtisoslashgan professional brenddir. RedOne mahsulotlari yuqori sifati, kuchli fiksatsiyasi, yoqimli hidi va zamonaviy dizayni bilan ajralib turadi." %}</p>
+          </div>
+          <a href="{% url 'products' %}" class="button button--secondary">
+            {% trans "Harid qilish" %}
           </a>
         </div>
       </div>
@@ -185,7 +171,7 @@
   </div>
 
   <div class="Products">
-    <h2>{% trans 'Yangi Mahsulotlar' %}
+    <h2>{% trans "Yangi Mahsulotlar" %}
     </h2>
     <div class="container">
       <ul style="margin: 15px 0;" class="slider">
@@ -195,7 +181,15 @@
           <div class="item-img-wrapper">
             <img src="{{product.image.url}}" alt="Image 5">
           </div>
-          <p>{{product.name_uz}}
+          <p>
+            {% if LANGUAGE_CODE == "uz" %}
+                {{ product.name_uz }}
+            {% elif LANGUAGE_CODE == "ru" %}
+                {{ product.name_ru }}
+            {% else %}
+                {{ product.name_uz }} {# Default holatda uzbekcha chiqariladi #}
+            {% endif %}
+
             <span class="icon-wrap">
               <svg style="width: 15px;" viewBox="0 0 14 10" fill="none" aria-hidden="true" focusable="false"
                 class="icon icon-arrow" xmlns="http://www.w3.org/2000/svg">
@@ -207,7 +201,7 @@
 
 
           </p>
-          <p style="color: #777; font-size: 12px;">{{product.price1}} {% trans 'sum' %}</p>
+          <p style="color: #777; font-size: 12px;">{{product.price1}} {% trans "sum" %}</p>
         </a>
         {% endfor %}
       </ul>
@@ -215,7 +209,7 @@
   <div style=" display: flex; justify-content: center;">
     <a href="{% url 'products' %}">
       <button class="view-all" type="submit">
-        {% trans 'Yana ko'rish' %}
+        {% trans "Yana ko'rish" %}
       </button>
     </a>
   </div>
