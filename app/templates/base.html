@@ -14,12 +14,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="{% static 'app/style.css' %}">
     <link rel="stylesheet" href="{% static 'app/footer.css' %}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
         crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/7.3.2/css/flag-icons.min.css"
-        crossorigin="anonymous">
+
 
     {% block extra_css %}{% endblock %}
 </head>
@@ -36,7 +33,8 @@
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">{% trans "Bosh sahifa" %}</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">{% trans "Kategoriyalar" %}</a>
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">{% trans "Kategoriyalar"
+                            %}</a>
                         <div class="dropdown-menu">
                             {% for category in categories %}
                             <a class="dropdown-item" href="{% url 'products' %}#{{ category }}">{{category}}</a>
@@ -52,8 +50,9 @@
                         <a class="nav-link position-relative" href="#" data-bs-toggle="modal"
                             data-bs-target="#cartModal">
                             <i class="fas fa-shopping-cart"></i>
-                            <span id="cart-count" class="badge badge-danger position-absolute"
+                            <span id="cart-count" class="badge bg-danger text-white position-absolute"
                                 style="top:0; left:0;">0</span>
+
                         </a>
                     </li>
                 </ul><div class="btn-group ml-3" style="margin: 0!important;">
@@ -77,30 +76,18 @@
         </nav>
 
         <!-- CART MODAL -->
-        <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel"
-            aria-hidden="true">
-            <div id="cartModalDialog" class="modal-dialog modal-lg" role="document">
+        <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="cartModalLabel">{% trans "Savat" %}</h5>
-                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                        <h5 class="modal-title" id="cartModalLabel">Savat</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <ul id="cart-items" class="list-group">
-                            <div id="counter-controls-{{ product.id }}" class="counter-controls d-none">
-                                <button type="button" onclick="decrement('{{ product.id }}')"
-                                    class="btn btn-sm btn-outline-secondary">-</button>
-                                <span id="counter-{{ product.id }}">0</span>
-                                <button type="button" onclick="increment('{{ product.id }}')"
-                                    class="btn btn-sm btn-outline-secondary">+</button>
-                            </div>
-                        </ul>
-                        <div class="mt-3">
-                            <input id="customer-phone" type="text" class="form-control"
-                                placeholder="Bog'lanish uchun telefon raqamingizni qoldiring">
-                        </div>
+                        <ul id="cart-items" class="list-group mb-3"></ul>
+                        <input id="customer-phone" type="text" class="form-control mb-3"
+                            placeholder="Telefon raqamingizni qoldiring" style="display:none;">
+                        <h6 id="empty-message" class="text-center">Savat bo'sh</h6>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans "Yopish" %}</button>
@@ -109,6 +96,7 @@
                 </div>
             </div>
         </div>
+
 
         <!-- MAIN CONTENT -->
         <main>
@@ -161,6 +149,7 @@
     </div>
 
     <style>
+        /* Общие стили (оставляем ваши предыдущие) */
         #cart-items li {
             animation: fadeIn 0.3s ease;
         }
@@ -170,50 +159,117 @@
         }
 
         .counter-span {
-        display: inline-block;
-        width: 30px;        
-        text-align: center;
-        }
-
-        @media (max-width: 768px) {
-        #cartModalDialog {
-            max-width: 95%;
-            margin: 1rem auto;
-        }
-
-        #cart-items li {
-            flex-direction: column;
-            align-items: flex-start;
+            display: inline-block;
+            width: 30px;
             text-align: center;
+        }
+
+        .cart-item-content {
+            flex: 1 1 auto;
+            min-width: 0;
+        }
+
+        .cart-item-quantity {
+            flex: 0 0 100px;
             justify-content: center;
         }
 
-        #cart-items li img {
-            margin-bottom: 10px;
+        .cart-item-total {
+            flex: 0 0 120px;
+            justify-content: flex-end;
         }
 
-        #cart-items .d-flex.justify-content-between {
-            flex-direction: column;
-            align-items: flex-start;
-            width: 100%;
+        .cart-item-info {
+            min-width: 0;
         }
 
-        #cart-items .btn-outline-secondary, 
-        #cart-items .btn-danger {
-            margin-top: 8px;
-            width: 50px;
+        .cart-item-name {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: block;
+            max-width: 100%;
         }
 
-        #customer-phone {
-            font-size: 16px;
-            margin-top: 10px;
-        }
+        /* Мобильная версия: до 576px */
+        @media (max-width: 576px) {
 
-        .modal-footer button {
-            width: 100%;
-            margin-top: 5px;
+            /* Сама строка товара — в колонку */
+            #cart-items li {
+                flex-direction: column;
+                align-items: stretch;
+                padding: 1rem;
+            }
+
+            /* Левый блок (изображение+инфо) — 100% ширины */
+            .cart-item-content {
+                width: 100%;
+                margin-bottom: 0.75rem;
+            }
+
+            .cart-item-content img {
+                width: 100%;
+                max-width: 120px;
+                height: auto;
+                margin: 0 auto 0.5rem;
+                display: block;
+            }
+
+            /* Блок с кнопками + количеством — 100% */
+            .cart-item-quantity {
+                width: 100%;
+                justify-content: space-between;
+                margin-bottom: 0.75rem;
+            }
+
+            .cart-item-quantity button {
+                flex: 1;
+                margin: 0 0.25rem;
+                font-size: 1.1rem;
+            }
+
+            .cart-item-quantity span {
+                flex: 1;
+                text-align: center;
+                font-weight: bold;
+            }
+
+            /* Блок с итогом и удалением — 100% */
+            .cart-item-total {
+                width: 100%;
+                justify-content: space-between;
+                margin-bottom: 0.5rem;
+            }
+
+            .cart-item-total strong {
+                font-size: 1.1rem;
+            }
+
+            /* Пустая корзина и input — центрация и margin */
+            #empty-message {
+                display: block;
+                text-align: center;
+                font-size: 1.2rem;
+                margin: 1rem 0;
+            }
+
+            #customer-phone {
+                display: block !important;
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+
+            /* Футер модалки — кнопки full-width */
+            .modal-footer {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .modal-footer .btn {
+                width: 100%;
+                margin-top: 0.5rem;
+            }
         }
-    }
 
         @keyframes fadeIn {
             from {
@@ -227,106 +283,119 @@
             }
         }
     </style>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-        crossorigin="anonymous"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
     {% block extra_js %}
     <script>
-        let cart = [];
+        let cartModal;
+        document.addEventListener('DOMContentLoaded', () => {
+            cartModal = new bootstrap.Modal(document.getElementById('cartModal'));
+            updateCartUI();
+        });
 
-        function addToCart(id, name, price, image) {
-            const existing = cart.find(item => item.id === id);
-            if (existing) {
-                existing.qty++;
-            } else {
-                cart.push({ id, name, price, image, qty: 1 });
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function addToCart(id, name, price, imageUrl) {
+            price = parseFloat(price);
+            if (isNaN(price) || price <= 0) {
+                alert('Mahsulot narxi noto‘g‘ri!');
+                return;
             }
-            updateCartUI();
-            $('#cartModal').modal('show');
-        }
 
-        function increment(id) {
-            const it = cart.find(i => i.id === id);
-            if (it) it.qty++;
-            updateCartUI();
-        }
-
-        function decrement(id) {
             const idx = cart.findIndex(i => i.id === id);
-            if (idx === -1) return;
-            cart[idx].qty--;
-            if (cart[idx].qty <= 0) cart.splice(idx, 1);
+            if (idx > -1) {
+                cart[idx].quantity++;
+            } else {
+                cart.push({ id, name, price, quantity: 1, imageUrl });
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
             updateCartUI();
+            cartModal.show();
         }
 
         function removeItem(id) {
-            cart = cart.filter(item => item.id !== id);
+            cart = cart.filter(i => i.id !== id);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartUI();
+        }
+
+        function increment(id) { changeQty(id, +1); }
+        function decrement(id) { changeQty(id, -1); }
+
+        function changeQty(id, delta) {
+            const idx = cart.findIndex(i => i.id === id);
+            if (idx === -1) return;
+            cart[idx].quantity = Math.max(1, cart[idx].quantity + delta);
+            localStorage.setItem('cart', JSON.stringify(cart));
             updateCartUI();
         }
 
         function updateCartUI() {
-            const container = document.getElementById('cart-items');
-            container.innerHTML = '';
-            let total = 0;
+            const itemsContainer = document.getElementById('cart-items');
+            itemsContainer.innerHTML = '';
 
-            cart.forEach(item => {
-                const line = document.createElement('li');
-                line.className = 'list-group-item d-flex justify-content-between align-items-center';
+            const totalQuantity = cart.reduce((s, i) => s + i.quantity, 0);
+            document.getElementById('cart-count').textContent = totalQuantity;
 
-                line.innerHTML = `
-              <div class="d-flex justify-content-between w-100 align-items-center">
-                <img src="${item.image}" width="50" class="mr-3" />
-                <div class="flex-grow-1">
-                  <strong>${item.name}</strong><br>
-                  <small>{% trans "Narxi" %}: ${item.price} so'm </small>
-                </div>
-                <div class="d-flex align-items-center">
-                  <button class="btn btn-sm btn-outline-secondary" onclick="decrement('${item.id}')">−</button>
-                  <span class="counter-span">${item.qty}</span>
-                  <button class="btn btn-sm btn-outline-secondary" onclick="increment('${item.id}')">+</button>
-                </div>
-                 <div class="ml-3">
-                <h6 class="price">${item.price * item.qty} so'm</h6>
-        </div>
-                <button class="btn btn-sm btn-danger " onclick="removeItem('${item.id}')">X</button>
-              </div>
-            `;
-
-                container.appendChild(line);
-                total += item.price * item.qty;
-            });
-
-            if (cart.length) {
-                const sumLine = document.createElement('div');
-                sumLine.className = 'mt-3 text-right';
-                sumLine.innerHTML = `<h5>Jami: ${total} so'm</h5>`;
-                container.appendChild(sumLine);
+            if (totalQuantity === 0) {
+                document.getElementById('empty-message').style.display = 'block';
+            } else {
+                document.getElementById('empty-message').style.display = 'none';
             }
 
-            document.getElementById('cart-count').textContent =
-                cart.reduce((s, i) => s + i.qty, 0);
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+
+                const li = document.createElement('li');
+                li.className = 'list-group-item d-flex align-items-center';
+
+                li.innerHTML = `
+         <div class="cart-item-content d-flex align-items-center">
+    <img src="${item.imageUrl}" width="50" class="me-3">
+    <div class="cart-item-info">
+      <h6 class="cart-item-name mb-1">${item.name}</h6>
+      <small class="cart-item-price">Narxi: ${item.price.toLocaleString()} so'm</small>
+    </div>
+  </div>
+
+  <!-- средний блок: кнопки + количество -->
+  <div class="cart-item-quantity d-flex align-items-center">
+    <button class="btn btn-sm btn-outline-secondary" onclick="decrement('${item.id}')">−</button>
+    <span class="mx-2">${item.quantity}</span>
+    <button class="btn btn-sm btn-outline-secondary" onclick="increment('${item.id}')">+</button>
+  </div>
+
+  <!-- правый блок: итог + крестик -->
+  <div class="cart-item-total d-flex align-items-center">
+    <strong class="me-2">${itemTotal.toLocaleString()} so'm</strong>
+    <button class="btn btn-sm btn-danger" onclick="removeItem('${item.id}')">X</button>
+  </div>
+        `;
+
+                itemsContainer.appendChild(li);
+            });
         }
 
+
         function submitOrder() {
-    const phone = document.getElementById('customer-phone').value.trim();
-    if (!phone) {
-        alert("Iltimos, telefon raqamingizni kiriting!");
-        return;
-    }
-    if (cart.length === 0) {
-        alert("Savat bo'sh!");
-        return;
-    }
-    console.log('Order:', { phone, cart });
-    alert('Buyurtma qabul qilindi!');
-    cart = [];
-    updateCartUI();
-    $('#cartModal').modal('hide');
-}
+            const phone = document.getElementById('customer-phone').value.trim();
+            if (cart.length === 0) {
+                alert('Savat bo\'sh!');
+                return;
+            }
+            if (!phone) {
+                alert('Iltimos, telefon raqamingizni kiriting!');
+                return;
+            }
+            alert('Buyurtma qabul qilindi!');
+            cart = [];
+            localStorage.removeItem('cart');
+            updateCartUI();
+            cartModal.hide();
+        }
     </script>
+
     {% endblock %}
 
 </body>
