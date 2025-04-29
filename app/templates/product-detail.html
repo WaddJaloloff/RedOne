@@ -40,7 +40,21 @@
           {% endif %}
         </div>
 
-        <p class="price" id="price">{{ product.formatted_price1 }} {% trans "sum" %}</p>
+        <p class="price" id="price" data-price="{{ product.price1 }}">
+          {{ product.formatted_price1 }} {% trans "sum" %}
+        </p>        
+
+        <div class="product-controls" id="controls-{{ product.id }}">
+          <button onclick="addToCart(
+            '{{ product.id }}',
+            '{{ product.name_uz }}',
+            getSelectedPrice(),
+            '{{ product.image.url }}'
+          )" class="add-to-cart-btn">
+            Savatga qo‘shish
+          </button>
+
+        </div>
 
       </div>
     </div>
@@ -50,27 +64,26 @@
 </div>
 {% get_current_language as LANGUAGE_CODE %}
 <script>
-  let language = "{{ LANGUAGE_CODE }}"; // Django'dan tilni olamiz
+  let language = "{{ LANGUAGE_CODE }}";
 
   function selectSize(element, price) {
-    // Barcha size-box elementlaridan 'active' klassini olib tashlaymiz
-    document.querySelectorAll('.size-box').forEach(el => el.classList.remove('active'));
-
-    // Faol tanlangan elementga 'active' klassini qo‘shamiz
+    document.querySelectorAll('.size-box').forEach(x => x.classList.remove('active'));
     element.classList.add('active');
 
-    // Tilga qarab valyuta nomi
-    let currency = "so'm"; // default
-    if (language === "ru") {
-      currency = "сум";
-    } else if (language === "uz") {
-      currency = "so'm";
-    }
+    let currency = "so'm";
+    if (language === "ru") currency = "сум";
 
-    // Narxni yangilaymiz
-    document.getElementById('price').innerText = price + " " + currency;
+    const priceTag = document.getElementById('price');
+    priceTag.innerText = price + " " + currency;
+    priceTag.dataset.price = price.replace(/\s/g, '').replace(/[^0-9.]/g, '');
+  }
+
+  function getSelectedPrice() {
+    const raw = document.getElementById('price').dataset.price;
+    return parseFloat(raw) || 0;
   }
 </script>
+
 
 
 {% endblock %}
