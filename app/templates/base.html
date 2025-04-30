@@ -55,23 +55,25 @@
 
                         </a>
                     </li>
-                </ul><div class="btn-group ml-3" style="margin: 0!important;">
-                  <button style="background-color: #000 !important" type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown">
-                      <span class="fi fi-{{ LANGUAGE_CODE|lower }}"></span> {{ LANGUAGE_CODE|upper }}
-                  </button>
-                  <ul class="dropdown-menu dropdown-menu-end">
-                      {% for code, name in LANGUAGES %}
-                          {% if code != LANGUAGE_CODE %}
-                              <li>
-                                  <a class="dropdown-item" href="/{{ code }}{{ request.path|slice:'3:' }}">
-                                      <span class="fi fi-{{ code|lower }}"></span> {{ code|upper }}
-                                  </a>
-                              </li>
-                          {% endif %}
-                      {% endfor %}
-                  </ul>
-              </div>
-              
+                </ul>
+                <div class="btn-group ml-3" style="margin: 0!important;">
+                    <button style="background-color: #000 !important" type="button"
+                        class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown">
+                        <span class="fi fi-{{ LANGUAGE_CODE|lower }}"></span> {{ LANGUAGE_CODE|upper }}
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        {% for code, name in LANGUAGES %}
+                        {% if code != LANGUAGE_CODE %}
+                        <li>
+                            <a class="dropdown-item" href="/{{ code }}{{ request.path|slice:'3:' }}">
+                                <span class="fi fi-{{ code|lower }}"></span> {{ code|upper }}
+                            </a>
+                        </li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+
             </div>
         </nav>
 
@@ -90,8 +92,10 @@
                         <h6 id="empty-message" class="text-center">Savat bo'sh</h6>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans "Yopish" %}</button>
-                        <button type="button" class="btn btn-primary" onclick="submitOrder()">{% trans "Buyurtmani yuborish" %}</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans "Yopish"
+                            %}</button>
+                        <button type="button" class="btn btn-primary" onclick="submitOrder()">{% trans "Buyurtmani
+                            yuborish" %}</button>
                     </div>
                 </div>
             </div>
@@ -102,7 +106,7 @@
         <main>
             {% block content %}{% endblock %}
         </main>
-        
+
 
         <!-- FOOTER -->
         <footer class="footer">
@@ -297,6 +301,7 @@
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
         function addToCart(id, name, price, imageUrl) {
+            console.log(id, name, price, imageUrl)
             price = parseFloat(price);
             if (isNaN(price) || price <= 0) {
                 alert('Mahsulot narxi noto‘g‘ri!');
@@ -338,10 +343,15 @@
             const totalQuantity = cart.reduce((s, i) => s + i.quantity, 0);
             document.getElementById('cart-count').textContent = totalQuantity;
 
+            const phoneInput = document.getElementById('customer-phone');
+            const emptyMessage = document.getElementById('empty-message');
+
             if (totalQuantity === 0) {
-                document.getElementById('empty-message').style.display = 'block';
+                emptyMessage.style.display = 'block';
+                phoneInput.style.display = 'none';
             } else {
-                document.getElementById('empty-message').style.display = 'none';
+                emptyMessage.style.display = 'none';
+                phoneInput.style.display = 'block';
             }
 
             cart.forEach(item => {
@@ -351,31 +361,30 @@
                 li.className = 'list-group-item d-flex align-items-center';
 
                 li.innerHTML = `
-         <div class="cart-item-content d-flex align-items-center">
-    <img src="${item.imageUrl}" width="50" class="me-3">
-    <div class="cart-item-info">
-      <h6 class="cart-item-name mb-1">${item.name}</h6>
-      <small class="cart-item-price">Narxi: ${item.price.toLocaleString()} so'm</small>
-    </div>
-  </div>
-
-  <!-- средний блок: кнопки + количество -->
-  <div class="cart-item-quantity d-flex align-items-center">
-    <button class="btn btn-sm btn-outline-secondary" onclick="decrement('${item.id}')">−</button>
-    <span class="mx-2">${item.quantity}</span>
-    <button class="btn btn-sm btn-outline-secondary" onclick="increment('${item.id}')">+</button>
-  </div>
-
-  <!-- правый блок: итог + крестик -->
-  <div class="cart-item-total d-flex align-items-center">
-    <strong class="me-2">${itemTotal.toLocaleString()} so'm</strong>
-    <button class="btn btn-sm btn-danger" onclick="removeItem('${item.id}')">X</button>
-  </div>
+            <div class="cart-item-content d-flex align-items-center">
+                <img src="${item.imageUrl}" width="50" class="me-3">
+                <div class="cart-item-info">
+                    <h6 class="cart-item-name mb-1">${item.name}</h6>
+                    <small class="cart-item-price">Narxi: ${item.price.toLocaleString()} so'm</small>
+                </div>
+            </div>
+            <div class="cart-item-quantity d-flex align-items-center">
+                <button class="btn btn-sm btn-outline-secondary" onclick="decrement('${item.id}')">−</button>
+                <span class="mx-2">${item.quantity}</span>
+                <button class="btn btn-sm btn-outline-secondary" onclick="increment('${item.id}')">+</button>
+            </div>
+            <div class="cart-item-total d-flex align-items-center">
+                <strong class="me-2">${itemTotal.toLocaleString()} so'm</strong>
+                <button class="btn btn-sm btn-danger" onclick="removeItem('${item.id}')">X</button>
+            </div>
         `;
 
                 itemsContainer.appendChild(li);
             });
         }
+
+
+        const ORDER_URL = "{% url 'order-create' %}";
 
 
         function submitOrder() {
@@ -388,12 +397,61 @@
                 alert('Iltimos, telefon raqamingizni kiriting!');
                 return;
             }
-            alert('Buyurtma qabul qilindi!');
-            cart = [];
-            localStorage.removeItem('cart');
-            updateCartUI();
-            cartModal.hide();
+            const payload = { phone, items: cart };
+
+            fetch(ORDER_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'X-CSRFToken': getCSRFToken() },
+                body: JSON.stringify(payload)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    alert('Buyurtma qabul qilindi!');
+                    cart = [];
+                    localStorage.removeItem('cart');
+                    updateCartUI();
+                    document.getElementById('customer-phone').value = '';
+                    cartModal.hide();
+                })
+                .catch(() => alert('Xatolik'));
         }
+
+        function getCSRFToken() {
+            const name = 'csrftoken';
+            const cookies = document.cookie.split(';');
+            for (let c of cookies) {
+                const trimmed = c.trim();
+                if (trimmed.startsWith(name + '=')) {
+                    return trimmed.substring(name.length + 1);
+                }
+            }
+            return '';
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const cartModal = new bootstrap.Modal(document.getElementById('cartModal'));
+
+            document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const id = btn.dataset.id;
+                    const name = btn.dataset.name;
+                    const imageUrl = btn.dataset.image;
+                    const price = getSelectedPrice();
+
+                    console.log('DEBUG:', id, name, price, imageUrl);
+
+                    addToCart(id, name, price, imageUrl);
+                    cartModal.show();
+                });
+            });
+        });
+
+        document.addEventListener('hidden.bs.modal', function () {
+            document.body.classList.remove('modal-open');
+            document.querySelector('.modal-backdrop').remove();
+        });
+
+
     </script>
 
     {% endblock %}

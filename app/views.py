@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from .models import *
 from .models import Product, Categories
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
+import json
 
 
 def index(request):
@@ -32,3 +35,21 @@ def products(request):
 def product_detail(request, pk):
     product = Product.objects.get(pk=pk)
     return render(request, 'product-detail.html', {'product': product})
+
+
+# korzina    backend
+
+def order_create(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        phone = data.get('phone')
+        items = data.get('items', [])
+
+        print(f"Nomer: {phone}")
+        for it in items:
+            print(f" — {it['name']}: {it['quantity']} × {it['price']}")
+
+        print("Buyurtma: ", json.dumps(items, ensure_ascii=False, indent=2))
+
+        return JsonResponse({'status': 'ok'})
+    return JsonResponse({'error': 'Invalid method'}, status=405)

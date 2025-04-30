@@ -12,8 +12,6 @@
         <img src="{{product.image.url}}" alt="">
       </div>
       <div class="detail-right">
-
-
         {% if LANGUAGE_CODE == "uz" %}
           <p class="detail-category">{{product.categgory.category_uz}}</p>
           <h3 class="detail-heading">{{product.name_uz}}</h3>
@@ -45,16 +43,17 @@
         </p>        
 
         <div class="product-controls" id="controls-{{ product.id }}">
-          <button onclick="addToCart(
-            '{{ product.id }}',
-            '{{ product.name_uz }}',
-            getSelectedPrice(),
-            '{{ product.image.url }}'
-          )" class="add-to-cart-btn">
-            Savatga qo‘shish
+          <button
+            type="button"
+            class="add-to-cart-btn"
+            data-id="{{ product.id }}"
+            data-name="{{ product.name_uz|escapejs }}"
+            data-image="{{ product.image.url|escapejs }}"
+          >
+            {% trans "Savatga qo‘shish" %}
           </button>
-
         </div>
+        
 
       </div>
     </div>
