@@ -33,11 +33,14 @@
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">{% trans "Bosh sahifa" %}</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">{% trans "Kategoriyalar"
-                            %}</a>
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">{% trans "Kategoriyalar"%}</a>
                         <div class="dropdown-menu">
                             {% for category in categories %}
-                            <a class="dropdown-item" href="{% url 'products' %}#{{ category }}">{{category}}</a>
+                                {% if LANGUAGE_CODE == "ru" %}
+                                    <a class="dropdown-item" href="{% url 'products' %}#{{ category.category_uz }}">{{category.category_ru}}</a>
+                                {% else %}
+                                    <a class="dropdown-item" href="{% url 'products' %}#{{ category.category_uz }}">{{category.category_uz}}</a>
+                                {% endif %}
                             {% endfor %}
                         </div>
                     </li>
@@ -111,14 +114,14 @@
                     <div class="footer-col">
                         <h4>{% trans "tashkilot" %}</h4>
                         <ul class="footer-ul">
-                            <li><a href="#about">{% trans 'Biz haqimizda' %}</a></li>
-                            <li><a href="#">{% trans "hizmatlarimiz" %}</a></li>
-                            <li><a href="#">{% trans "siyosat" %}</a></li>
+                            <li><a href="{% url 'index' %}#about">{% trans 'Biz haqimizda' %}</a></li>
+                            <li><a href="{% url 'index' %}#about">{% trans "hizmatlarimiz" %}</a></li>
+                            <li><a href="#footer">{% trans "siyosat" %}</a></li>
                         </ul>
                     </div>
 
                     <div class="footer-col">
-                        <h4>{% trans 'Yordam'%}</h4>
+                        <h4>{% trans 'Yordam-Aloqa' %}</h4>
                         <ul class="footer-ul">
                             <li><a href="#">{% trans "Telefon" %}</a></li>
                             <li><a href="#">{% trans "Telegram" %}</a></li>
@@ -128,8 +131,8 @@
                     <div class="footer-col">
                         <h4>{% trans "online dokon" %}</h4>
                         <ul class="footer-ul">
-                            <li><a href="#">{% trans "Mahsulotlar" %}</a></li>
-                            <li><a href="#">{% trans "kategoriyalar" %}</a></li>
+                            <li><a href="{% url 'products' %}">{% trans "Mahsulotlar" %}</a></li>
+                            <li><a href="{% url 'products' %}">{% trans "kategoriyalar" %}</a></li>
                             <li><a href="#">{% trans "Yuqoriga" %}</a></li>
                         </ul>
                     </div>

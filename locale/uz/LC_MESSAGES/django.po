@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-28 20:52+0500\n"
+"POT-Creation-Date: 2025-04-30 22:03+0500\n"
 "PO-Revision-Date: 2025-04-26 11:12+0000\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,88 +19,80 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Translated-Using: django-rosetta 0.10.2\n"
 
-#: .\app\templates\base.html:37
+#: .\app\templates\base.html:34
 msgid "Bosh sahifa"
 msgstr "Bosh sahifa"
 
-#: .\app\templates\base.html:39 .\app\templates\home.html:17
+#: .\app\templates\base.html:36 .\app\templates\home.html:17
 msgid "Kategoriyalar"
 msgstr "Kategoriyalar"
 
-#: .\app\templates\base.html:46
+#: .\app\templates\base.html:47
 msgid "Haqimizda"
 msgstr "Haqimizda"
 
-#: .\app\templates\base.html:48 .\app\templates\base.html:143
+#: .\app\templates\base.html:49 .\app\templates\base.html:134
 msgid "Mahsulotlar"
 msgstr "Mahsulotlar"
 
-#: .\app\templates\base.html:85
-msgid "Savat"
-msgstr ""
-
-#: .\app\templates\base.html:106
+#: .\app\templates\base.html:96
 msgid "Yopish"
 msgstr ""
 
-#: .\app\templates\base.html:107
+#: .\app\templates\base.html:97
 msgid "Buyurtmani yuborish"
 msgstr ""
 
-#: .\app\templates\base.html:124
+#: .\app\templates\base.html:115
 msgid "tashkilot"
 msgstr ""
 
-#: .\app\templates\base.html:126
+#: .\app\templates\base.html:117
 #, fuzzy
 #| msgid "Haqimizda"
 msgid "Biz haqimizda"
 msgstr "Haqimizda"
 
-#: .\app\templates\base.html:127
+#: .\app\templates\base.html:118
 msgid "hizmatlarimiz"
 msgstr ""
 
-#: .\app\templates\base.html:128
+#: .\app\templates\base.html:119
 msgid "siyosat"
 msgstr ""
 
-#: .\app\templates\base.html:133
-msgid "Yordam"
+#: .\app\templates\base.html:124
+msgid "Yordam-Aloqa"
 msgstr ""
 
-#: .\app\templates\base.html:135
+#: .\app\templates\base.html:126
 msgid "Telefon"
 msgstr ""
 
-#: .\app\templates\base.html:136
+#: .\app\templates\base.html:127
 msgid "Telegram"
 msgstr ""
 
-#: .\app\templates\base.html:137
+#: .\app\templates\base.html:128
 msgid "Instagram"
 msgstr ""
 
-#: .\app\templates\base.html:141
+#: .\app\templates\base.html:132
 msgid "online dokon"
 msgstr ""
 
-#: .\app\templates\base.html:144
+#: .\app\templates\base.html:135
 #, fuzzy
 #| msgid "Kategoriyalar"
 msgid "kategoriyalar"
 msgstr "Kategoriyalar"
 
-#: .\app\templates\base.html:145
+#: .\app\templates\base.html:136
 msgid "Yuqoriga"
 msgstr ""
 
-#: .\app\templates\base.html:149
+#: .\app\templates\base.html:140
 msgid "bizga qo'shiling"
-msgstr ""
-
-#: .\app\templates\base.html:284
-msgid "Narxi"
 msgstr ""
 
 #: .\app\templates\home.html:22
@@ -139,12 +131,13 @@ msgstr ""
 msgid "Yangi Mahsulotlar"
 msgstr "Mahsulotlar"
 
-#: .\app\templates\home.html:204
+#: .\app\templates\home.html:204 .\app\templates\product-detail.html:40
+#: .\app\templates\products.html:31 .\app\templates\products.html:59
 msgid "sum"
 msgstr ""
 
-#: .\app\templates\product-detail.html:43 .\app\templates\products.html:28
-msgid "so'm"
+#: .\app\templates\product-detail.html:50
+msgid "Savatga qo‘shish"
 msgstr ""
 
 #, fuzzy

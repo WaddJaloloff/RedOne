@@ -14,11 +14,7 @@
       <div class="detail-right">
 
 
-        {% if LANGUAGE_CODE == "uz" %}
-          <p class="detail-category">{{product.categgory.category_uz}}</p>
-          <h3 class="detail-heading">{{product.name_uz}}</h3>
-          <p class="detail-desc">{{product.about_uz}}</p>
-        {% elif LANGUAGE_CODE == "ru" %}
+        {% if LANGUAGE_CODE == "ru" %}
           <p class="detail-category">{{product.categgory.category_ru}}</p>
           <h3 class="detail-heading">{{product.name_ru}}</h3>
           <p class="detail-desc">{{product.about_ru}}</p>
@@ -51,7 +47,7 @@
             getSelectedPrice(),
             '{{ product.image.url }}'
           )" class="add-to-cart-btn">
-            Savatga qo‘shish
+            {% trans "Savatga qo‘shish" %}
           </button>
 
         </div>
