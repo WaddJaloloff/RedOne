@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import *
+from .run_bot import send_order_to_group
 from .models import Product, Categories
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
@@ -42,14 +43,8 @@ def product_detail(request, pk):
 def order_create(request):
     if request.method == 'POST':
         data = json.loads(request.body)
-        phone = data.get('phone')
-        items = data.get('items', [])
-
-        print(f"Nomer: {phone}")
-        for it in items:
-            print(f" — {it['name']}: {it['quantity']} × {it['price']}")
-
-        print("Buyurtma: ", json.dumps(items, ensure_ascii=False, indent=2))
-
+        phone_number = data.get('phone')
+        order_items = data.get('items', [])
+        send_order_to_group(phone_number, order_items)
         return JsonResponse({'status': 'ok'})
     return JsonResponse({'error': 'Invalid method'}, status=405)
