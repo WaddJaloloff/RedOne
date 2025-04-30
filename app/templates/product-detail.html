@@ -16,12 +16,10 @@
           <p class="detail-category">{{product.categgory.category_uz}}</p>
           <h3 class="detail-heading">{{product.name_uz}}</h3>
           <p class="detail-desc">{{product.about_uz}}</p>x
-
-
-        {% if LANGUAGE_CODE == "ru" %}
-          <p class="detail-category">{{product.categgory.category_ru}}</p>
-          <h3 class="detail-heading">{{product.name_ru}}</h3>
-          <p class="detail-desc">{{product.about_ru}}</p>
+          {% elif LANGUAGE_CODE == "ru" %}
+          <p class="detail-category">{{ product.category.category_ru }}</p>
+          <h3 class="detail-heading">{{ product.name_ru }}</h3>
+          <p class="detail-desc">{{ product.about_ru }}</p>
         {% else %}
           <p class="detail-category">{{product.categgory.category_uz}}</p>
           <h3 class="detail-heading">{{product.name_uz}}</h3>
