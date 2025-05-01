@@ -13,17 +13,17 @@
       </div>
       <div class="detail-right">
         {% if LANGUAGE_CODE == "uz" %}
-          <p class="detail-category">{{product.categgory.category_uz}}</p>
-          <h3 class="detail-heading">{{product.name_uz}}</h3>
-          <p class="detail-desc">{{product.about_uz}}</p>x
-          {% elif LANGUAGE_CODE == "ru" %}
-          <p class="detail-category">{{ product.category.category_ru }}</p>
-          <h3 class="detail-heading">{{ product.name_ru }}</h3>
-          <p class="detail-desc">{{ product.about_ru }}</p>
+        <p class="detail-category">{{product.categgory.category_uz}}</p>
+        <h3 class="detail-heading">{{product.name_uz}}</h3>
+        <p class="detail-desc">{{product.about_uz}}</p>x
+        {% elif LANGUAGE_CODE == "ru" %}
+        <p class="detail-category">{{ product.category.category_ru }}</p>
+        <h3 class="detail-heading">{{ product.name_ru }}</h3>
+        <p class="detail-desc">{{ product.about_ru }}</p>
         {% else %}
-          <p class="detail-category">{{product.categgory.category_uz}}</p>
-          <h3 class="detail-heading">{{product.name_uz}}</h3>
-          <p class="detail-desc">{{product.about_uz}}</p>
+        <p class="detail-category">{{product.categgory.category_uz}}</p>
+        <h3 class="detail-heading">{{product.name_uz}}</h3>
+        <p class="detail-desc">{{product.about_uz}}</p>
         {% endif %}
 
         <div class="sizes">
@@ -40,20 +40,16 @@
 
         <p class="price" id="price" data-price="{{ product.price1 }}">
           {{ product.formatted_price1 }} {% trans "sum" %}
-        </p>        
+        </p>
 
         <div class="product-controls" id="controls-{{ product.id }}">
-          <button
-            type="button"
-            class="add-to-cart-btn"
-            data-id="{{ product.id }}"
-            data-name="{{ product.name_uz }}"
-            data-image="{{ product.image.url }}"
-          >
+          <button type="button" class="add-to-cart-btn" data-id="{{ product.id }}" data-name="{{ product.name_uz }}"
+            data-image="{{ product.image.url }}" data-size="">
             {% trans "Savatga qo‘shish" %}
           </button>
+
         </div>
-        
+
 
       </div>
     </div>
@@ -75,7 +71,14 @@
     const priceTag = document.getElementById('price');
     priceTag.innerText = price + " " + currency;
     priceTag.dataset.price = price.replace(/\s/g, '').replace(/[^0-9.]/g, '');
+
+    const selectedSize = element.innerText.trim();
+    const addToCartBtn = document.querySelector('.add-to-cart-btn');
+    if (addToCartBtn) {
+      addToCartBtn.setAttribute('data-size', selectedSize);
+    }
   }
+
 
   function getSelectedPrice() {
     const raw = document.getElementById('price').dataset.price;
