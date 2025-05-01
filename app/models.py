@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.core.exceptions import ValidationError
 # Create your models here.
 
 class Categories(models.Model):
@@ -33,32 +33,16 @@ class Product(models.Model):
         if self.price2:
             return f"{self.price2:,}".replace(",", " ")
         return ""
-    
-class Top_product(models.Model):
-    name_uz = models.CharField(max_length=200)
-    name_ru = models.CharField(max_length=200)
-    size1 = models.CharField(max_length=10)
-    price1 = models.IntegerField()
-    size2 = models.CharField(max_length=10, null=True, blank=True)
-    price2 = models.IntegerField(null=True, blank=True)
-    about_uz = models.TextField(null=True, blank=True)
-    about_ru = models.TextField(null=True, blank=True)
-    category = models.ForeignKey(Categories, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='images')
-    is_active = models.BooleanField(default=True)
-    def __str__(self):
-        return self.name_uz
-    
-    @property
-    def formatted_price1(self):
-        return f"{self.price1:,}".replace(",", " ")
+    from django.core.exceptions import ValidationError
 
-    @property
-    def formatted_price2(self):
-        if self.price2:
-            return f"{self.price2:,}".replace(",", " ")
-        return ""
-    
+class TopProduct(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    order = models.PositiveIntegerField(default=0, help_text="Qaysi tartibda chiqishini belgilang")
+
+    def __str__(self):
+        return f"Top: {self.product.name_uz}"
+
+
 # def save(self, *args, **kwargs):
 #             if len(self.name_uz) > 20:
 #                 self.name_uz = self.name_uz[:20].rsplit(' ', 1)[0]

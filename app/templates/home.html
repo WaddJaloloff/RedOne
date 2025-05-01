@@ -104,12 +104,12 @@
         </h2>
         <div class="container">
           <ul class="slider">
-            {% for product in top_products %}
-            <a href="{% url 'product_detail' product.id %}" class="item-product" >
+            {% for item in top_products %}
+            <a href="{% url 'product_detail' item.product.id %}" class="item-product">
               <div class="item-img-wrapper">
-                <img src="{{product.image.url}}" alt="Image 5">
+                <img src="{{ item.product.image.url }}" alt="Image 5">
               </div>
-              <p>{{product.name_uz}}
+              <p>{{ item.product.name_uz }}
                 <span class="icon-wrap">
                   <svg style="width: 15px;" viewBox="0 0 14 10" fill="none" aria-hidden="true" focusable="false"
                     class="icon icon-arrow" xmlns="http://www.w3.org/2000/svg">
@@ -118,13 +118,11 @@
                       fill="currentColor"></path>
                   </svg>
                 </span>
-
-
               </p>
-              
-          <p style="color: #777; font-size: 12px;">{{product.price1}} sum</p>
+              <p style="color: #777; font-size: 12px;">{{ item.product.formatted_price1 }} so‘m</p>
             </a>
             {% endfor %}
+            
           </ul>
         </div>
 
