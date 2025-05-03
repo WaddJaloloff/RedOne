@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="{% static 'app/style.css' %}">
     <link rel="stylesheet" href="{% static 'app/footer.css' %}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
+        crossorigin="anonymous">
 
 
     {% block extra_css %}{% endblock %}
@@ -93,11 +94,14 @@
                         <ul id="cart-items" class="list-group mb-3"></ul>
                         <input id="customer-phone" type="text" class="form-control mb-3"
                             placeholder="Telefon raqamingizni qoldiring" style="display:none;">
+                        <div id="cart-total" class="text-end fw-bold fs-5 mb-3" style="display:none;"></div>
                         <h6 id="empty-message" class="text-center">Savat bo'sh</h6>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans "Yopish"%}</button>
-                        <button type="button" class="btn btn-primary" onclick="submitOrder()">{% trans "Buyurtmani yuborish" %}</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans
+                            "Yopish"%}</button>
+                        <button type="button" class="btn btn-primary" onclick="submitOrder()">{% trans "Buyurtmani
+                            yuborish" %}</button>
                     </div>
                 </div>
             </div>
@@ -160,6 +164,10 @@
             animation: fadeIn 0.3s ease;
         }
 
+        .cart_sm {
+            display: none;
+        }
+
         .price {
             width: 150px;
         }
@@ -178,6 +186,7 @@
         .cart-item-quantity {
             flex: 0 0 100px;
             justify-content: center;
+            margin-right: 2rem;
         }
 
         .cart-item-total {
@@ -201,6 +210,10 @@
             margin-left: 20px;
         }
 
+        .cart-total-sm {
+            display: none;
+        }
+
         /* Мобильная версия: до 576px */
         @media (max-width: 576px) {
 
@@ -209,6 +222,13 @@
                 flex-direction: column;
                 align-items: stretch;
                 padding: 1rem;
+                gap: 0;
+            }
+
+            .cart_sm {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
             }
 
             .cart-item-size {
@@ -218,7 +238,6 @@
             /* Левый блок (изображение+инфо) — 100% ширины */
             .cart-item-content {
                 width: 100%;
-                margin-bottom: 0.75rem;
             }
 
             .cart-item-content img {
@@ -229,11 +248,10 @@
                 display: block;
             }
 
-            /* Блок с кнопками + количеством — 100% */
             .cart-item-quantity {
-                width: 100%;
-                justify-content: space-between;
-                margin-bottom: 0.75rem;
+                width: 50%;
+                margin-left: 1rem;
+                margin-right: 0;
             }
 
             .cart-item-quantity button {
@@ -248,15 +266,17 @@
                 font-weight: bold;
             }
 
-            /* Блок с итогом и удалением — 100% */
             .cart-item-total {
-                width: 100%;
-                justify-content: space-between;
-                margin-bottom: 0.5rem;
+                display: none;
+                flex: none;
             }
 
             .cart-item-total strong {
-                font-size: 1.1rem;
+                display: none;
+            }
+
+            .btn-sm-none {
+                display: none;
             }
 
             /* Пустая корзина и input — центрация и margin */
@@ -264,7 +284,7 @@
                 display: block;
                 text-align: center;
                 font-size: 1.2rem;
-                margin: 1rem 0;
+                margin: 0;
             }
 
             #customer-phone {
@@ -281,7 +301,15 @@
 
             .modal-footer .btn {
                 width: 100%;
-                margin-top: 0.5rem;
+            }
+
+            .cart-item-flex {
+                width: 100%;
+                gap: 1.5rem;
+            }
+
+            .cart-total-sm {
+                display: block;
             }
         }
 
@@ -311,13 +339,14 @@
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
         function addToCart(id, name, price, imageUrl, size) {
-            size = size.replace("ml", ""); 
+            size = size.replace("ml", "");
             price = parseFloat(price);
 
             if (isNaN(price) || price <= 0) {
                 alert('Mahsulot narxi noto‘g‘ri!');
                 return;
             }
+            console.log(size)
             const itemKey = id + "-" + size;
             const idx = cart.findIndex(i => i.itemKey === itemKey);
 
@@ -345,9 +374,16 @@
         function changeQty(itemKey, delta) {
             const idx = cart.findIndex(i => i.itemKey === itemKey);
             if (idx === -1) return;
-            cart[idx].quantity = Math.max(1, cart[idx].quantity + delta);
-            localStorage.setItem('cart', JSON.stringify(cart));
-            updateCartUI();
+
+            const newQty = cart[idx].quantity + delta;
+
+            if (newQty <= 0) {
+                removeItem(itemKey);
+            } else {
+                cart[idx].quantity = newQty;
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartUI();
+            }
         }
 
         function updateCartUI() {
@@ -355,17 +391,22 @@
             itemsContainer.innerHTML = '';
 
             const totalQuantity = cart.reduce((s, i) => s + i.quantity, 0);
+            const totalPrice = cart.reduce((sum, item) => sum + item.quantity * item.price, 0);
             document.getElementById('cart-count').textContent = totalQuantity;
 
             const phoneInput = document.getElementById('customer-phone');
             const emptyMessage = document.getElementById('empty-message');
+            const totalDiv = document.getElementById('cart-total');
 
             if (totalQuantity === 0) {
                 emptyMessage.style.display = 'block';
                 phoneInput.style.display = 'none';
+                totalDiv.style.display = 'none';
             } else {
                 emptyMessage.style.display = 'none';
                 phoneInput.style.display = 'block';
+                totalDiv.style.display = 'block';
+                totalDiv.textContent = `Jami: ${totalPrice.toLocaleString()} so'm`;
             }
 
             cart.forEach(item => {
@@ -375,6 +416,7 @@
                 li.className = 'list-group-item d-flex align-items-center';
 
                 li.innerHTML = `
+                <div class="cart_sm cart-item-content   "> <p> </p> <button class="btn btn-sm btn-danger" onclick="removeItem('${item.itemKey}')">X</button> </div>
             <div class="cart-item-content d-flex align-items-center">
                 <img src="${item.imageUrl}" width="50" class="me-3">
                 <div class="cart-item-info">
@@ -383,14 +425,17 @@
                     <small class="cart-item-size">O'lcham: ${item.size.toLocaleString()} ml</small>
                 </div>
             </div>
-            <div class="cart-item-quantity d-flex align-items-center">
-                <button class="btn btn-sm btn-outline-secondary" onclick="decrement('${item.itemKey}')">−</button>
+            <div class="cart-item-flex d-flex align-items-center">
+                <div class="cart-item-quantity d-flex align-items-center">
+                    <button class="btn btn-sm btn-outline-secondary" onclick="decrement('${item.itemKey}')">−</button>
                 <span class="mx-2">${item.quantity}</span>
                 <button class="btn btn-sm btn-outline-secondary" onclick="increment('${item.itemKey}')">+</button>
+                </div>
+                <strong class="cart-total-sm">${itemTotal.toLocaleString()} so'm</strong>
             </div>
             <div class="cart-item-total d-flex align-items-center">
                 <strong class="me-2">${itemTotal.toLocaleString()} so'm</strong>
-                <button class="btn btn-sm btn-danger" onclick="removeItem('${item.itemKey}')">X</button>
+                <button class="btn btn-sm btn-danger btn-sm-none" onclick="removeItem('${item.itemKey}')">X</button>
             </div>
         `;
 
