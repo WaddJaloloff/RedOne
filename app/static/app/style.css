@@ -191,6 +191,78 @@ aspect-ratio: 1 / 1;
 }
 
 /* Media Query for smaller screens */
+@media (max-width: 990px) {
+  .about-img {
+    max-width: 100% !important;
+    object-fit: cover;
+  }
+
+  .about-big {
+    display: flex;
+    flex-direction: column !important;
+  }
+
+  .slider {
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+    gap: 10px;
+  }
+
+  .item {
+    flex: 0 0 95%;
+    /* Rasmni 95% gacha kattalashtirish */
+    scroll-snap-align: start;
+  }
+
+  .item-product {
+    flex: 0 0 55%;
+    /* Rasmni 95% gacha kattalashtirish */
+    scroll-snap-align: start;
+  }
+
+  .item img,
+  .item-product img {
+    width: 100%;
+  }
+}
+
+@media (max-width: 450px) {
+  .about-us {
+    text-align: start;
+    padding: 25px 0;
+  }
+
+  .about-img {
+    max-width: 100% !important;
+    min-height: 200px;
+    object-fit: cover;
+  }
+
+  .about-content {
+    padding: 10px;
+  }
+
+  .about-heading {
+    font-size: 30px;
+  }
+
+  .about-text {
+    font-size: 14px;
+
+  }
+
+  .slider {
+    gap: 5px;
+  }
+
+  .item-product {
+    flex: 0 0 95%;
+    /* Rasmni 95% gacha kattalashtirish */
+    scroll-snap-align: center;
+  }
+}
 
 
 .sticky-top {
@@ -337,6 +409,7 @@ aspect-ratio: 1 / 1;
   transition: background-color 0.3s ease;
 }
 
+
 .add-to-cart-btn:hover {
   background-color: #333;
 }
@@ -394,26 +467,6 @@ aspect-ratio: 1 / 1;
   line-height: 22px;
   max-width: 500px;
 }
-
-select {
-  background-color: black;
-  color: white;
-  border: 1px solid white;
-  padding: 5px 10px;
-  font-size: 16px;
-  border-radius: 4px;
-}
-
-select option {
-  background-color: black;
-  color: white;
-}
-
-select:focus {
-  outline: none;
-  border-color: #ccc;
-}
-
 
 @media (max-width: 500px) {
 
@@ -520,6 +573,26 @@ select:focus {
   }
 }
 
+select {
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+  padding: 5px 10px;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+select option {
+  background-color: black;
+  color: white;
+}
+
+select:focus {
+  outline: none;
+  border-color: #ccc;
+}
+
+
 @media (max-width: 455px) {
   .category-img-wrapper {
     width: 150px;
@@ -550,79 +623,6 @@ select:focus {
     max-width: 105px;
   }
 }
-@media (max-width: 990px) {
-  .about-img {
-    max-width: 100% !important;
-    object-fit: cover;
-  }
-
-  .about-big {
-    display: flex;
-    flex-direction: column !important;
-  }
-
-  .slider {
-    overflow-x: scroll;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    display: flex;
-    gap: 10px;
-  }
-
-  .item {
-    flex: 0 0 95%;
-    /* Rasmni 95% gacha kattalashtirish */
-    scroll-snap-align: start;
-  }
-
-  .item-product {
-    flex: 0 0 55%;
-    /* Rasmni 95% gacha kattalashtirish */
-    scroll-snap-align: start;
-  }
-
-  .item img,
-  .item-product img {
-    width: 100%;
-  }
-}
-
-@media (max-width: 450px) {
-  .about-us {
-    text-align: start;
-    padding: 25px 0;
-  }
-
-  .about-img {
-    max-width: 100% !important;
-    min-height: 200px;
-    object-fit: cover;
-  }
-
-  .about-content {
-    padding: 10px;
-  }
-
-  .about-heading {
-    font-size: 30px;
-  }
-
-  .about-text {
-    font-size: 14px;
-
-  }
-
-  .slider {
-    gap: 5px;
-  }
-
-  .item-product {
-    flex: 0 0 95%;
-    /* Rasmni 95% gacha kattalashtirish */
-    scroll-snap-align: center;
-  }
-}
-
 
 .size-box {
   display: inline-block;
