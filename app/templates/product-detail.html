@@ -13,11 +13,15 @@
       </div>
       <div class="detail-right">
         {% if LANGUAGE_CODE == "ru" %}
+        <a href="{% url 'products' %}#{{ product.category.category_uz }}" style="color: #000;">
           <p class="detail-category">{{ product.category.category_ru }}</p>
+        </a>
           <h3 class="detail-heading">{{ product.name_ru }}</h3>
           <p class="detail-desc">{{ product.about_ru }}</p>
         {% else %}
-        <p class="detail-category">{{product.categgory.category_uz}}</p>
+        <a href="{% url 'products' %}#{{ product.category.category_uz }}" style="color: #000;">
+        <p class="detail-category">{{product.category.category_uz}}</p>
+        </a>
         <h3 class="detail-heading">{{product.name_uz}}</h3>
         <p class="detail-desc">{{product.about_uz}}</p>
         {% endif %}
@@ -51,6 +55,16 @@
     </div>
   </div>
 </section>
+
+
+
+
+
+
+
+
+
+
 
 </div>
 {% get_current_language as LANGUAGE_CODE %}
