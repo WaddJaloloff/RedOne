@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-30 22:03+0500\n"
-"PO-Revision-Date: 2025-04-30 22:06+0000\n"
+"POT-Creation-Date: 2025-05-05 13:55+0500\n"
+"PO-Revision-Date: 2025-05-05 13:56+0000\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -27,68 +27,59 @@ msgstr "Главная"
 msgid "Kategoriyalar"
 msgstr "Категории"
 
-#: .\app\templates\base.html:47
+#: .\app\templates\base.html:49
 msgid "Haqimizda"
 msgstr "О нас"
 
-#: .\app\templates\base.html:49 .\app\templates\base.html:134
+#: .\app\templates\base.html:51 .\app\templates\base.html:141
 msgid "Mahsulotlar"
 msgstr "Продукция"
 
-#: .\app\templates\base.html:96
-msgid "Yopish"
-msgstr "закрыть"
-
-#: .\app\templates\base.html:97
-msgid "Buyurtmani yuborish"
-msgstr "Заказать"
-
-#: .\app\templates\base.html:115
+#: .\app\templates\base.html:122
 msgid "tashkilot"
 msgstr "организация"
 
-#: .\app\templates\base.html:117
+#: .\app\templates\base.html:124
 msgid "Biz haqimizda"
 msgstr "О нас"
 
-#: .\app\templates\base.html:118
+#: .\app\templates\base.html:125
 msgid "hizmatlarimiz"
 msgstr "наши услуги"
 
-#: .\app\templates\base.html:119
+#: .\app\templates\base.html:126
 msgid "siyosat"
 msgstr "политика"
 
-#: .\app\templates\base.html:124
-#| msgid "Yordam"
+#: .\app\templates\base.html:131
 msgid "Yordam-Aloqa"
 msgstr "Помощь-Связь"
 
-#: .\app\templates\base.html:126
+#: .\app\templates\base.html:133
 msgid "Telefon"
 msgstr "Телефон"
 
-#: .\app\templates\base.html:127
+#: .\app\templates\base.html:134
 msgid "Telegram"
 msgstr "Телеграм "
 
-#: .\app\templates\base.html:128
+#: .\app\templates\base.html:135
 msgid "Instagram"
 msgstr "Инстаграм"
 
-#: .\app\templates\base.html:132
+#: .\app\templates\base.html:139
 msgid "online dokon"
 msgstr "интернет-магазин"
 
-#: .\app\templates\base.html:135
+#: .\app\templates\base.html:142
 msgid "kategoriyalar"
 msgstr "Категории"
 
-#: .\app\templates\base.html:136
+#: .\app\templates\base.html:143
 msgid "Yuqoriga"
 msgstr "Вверх"
 
-#: .\app\templates\base.html:140
+#: .\app\templates\base.html:147
 msgid "bizga qo'shiling"
 msgstr "Присоединяйтесь к нам"
 
@@ -96,46 +87,57 @@ msgstr "Присоединяйтесь к нам"
 msgid "Hair Styling"
 msgstr ""
 
-#: .\app\templates\home.html:103
+#: .\app\templates\home.html:96
 msgid "Mashhur"
 msgstr "Популярный"
 
-#: .\app\templates\home.html:134 .\app\templates\home.html:212
+#: .\app\templates\home.html:124 .\app\templates\home.html:202
 msgid "Yana ko'rish"
 msgstr "Показать больше"
 
-#: .\app\templates\home.html:160
+#: .\app\templates\home.html:150
 msgid "Biz haqimizda!"
 msgstr "О нас"
 
-#: .\app\templates\home.html:163
+#: .\app\templates\home.html:153
+#| msgid ""
+#| "Biz sizga taqdim etayotgan RedOne — dunyo bo‘yicha mashhur Turkiyada ishlab "
+#| "chiqariluvchi erkaklar uchun soch va tashqi ko‘rinish parvarishiga "
+#| "ixtisoslashgan professional brenddir. RedOne mahsulotlari yuqori sifati, "
+#| "kuchli fiksatsiyasi, yoqimli hidi va zamonaviy dizayni bilan ajralib turadi."
 msgid ""
-"Biz sizga taqdim etayotgan RedOne — dunyo bo‘yicha mashhur Turkiyada ishlab "
+"Biz sizga taqdim etayotgan RedOne — dunyo bo'yicha mashhur Turkiyada ishlab "
 "chiqariluvchi erkaklar uchun soch va tashqi ko‘rinish parvarishiga "
 "ixtisoslashgan professional brenddir. RedOne mahsulotlari yuqori sifati, "
 "kuchli fiksatsiyasi, yoqimli hidi va zamonaviy dizayni bilan ajralib turadi."
 msgstr ""
 "Представляем вам RedOne — всемирно известный профессиональный бренд, "
 "специализирующийся на средствах по уходу за волосами и волосами для мужчин, "
-"произведенных в Турции. Продукция RedOne отличается высоким качеством, "
+"производимых в Турции. Продукция RedOne отличается высоким качеством, "
 "сильной фиксацией, приятным запахом и современным дизайном."
 
-#: .\app\templates\home.html:166
+#: .\app\templates\home.html:156
 msgid "Harid qilish"
 msgstr "Покупки"
 
-#: .\app\templates\home.html:174
+#: .\app\templates\home.html:164
 msgid "Yangi Mahsulotlar"
 msgstr "Продукция"
 
-#: .\app\templates\home.html:204 .\app\templates\product-detail.html:40
+#: .\app\templates\home.html:194 .\app\templates\product-detail.html:38
 #: .\app\templates\products.html:31 .\app\templates\products.html:59
 msgid "sum"
 msgstr "сум"
 
-#: .\app\templates\product-detail.html:50
+#: .\app\templates\product-detail.html:44
 msgid "Savatga qo‘shish"
 msgstr "Добавить в корзину"
+
+#~ msgid "Yopish"
+#~ msgstr "закрыть"
+
+#~ msgid "Buyurtmani yuborish"
+#~ msgstr "Заказать"
 
 #~ msgid "Savat"
 #~ msgstr "Корзина"
