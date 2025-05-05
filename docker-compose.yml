@@ -1,0 +1,22 @@
+version: '3.9'
+name: 'Redone'
+
+networks:
+  dev:
+
+x-base-api: &base-project
+  volumes:
+    - ./:/opt/app
+  build:
+    context: .
+    dockerfile: Dockerfile
+#    target: local
+
+services:
+  project:
+    <<: *base-project
+    command: ["python3", "manage.py", "runserver", "0.0.0.0:8000"]
+    ports:
+      - ${SERVER_PORT:-8000}:8000
+    networks:
+      - dev
