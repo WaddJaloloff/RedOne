@@ -4,7 +4,9 @@ charset-normalizer==3.4.1
 Django==5.2
 django-jazzmin==3.0.1
 django-rosetta==0.10.2
+gunicorn==23.0.0
 idna==3.10
+packaging==25.0
 pillow==11.2.1
 polib==1.2.0
 pyTelegramBotAPI==4.27.0
