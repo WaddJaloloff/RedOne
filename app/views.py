@@ -5,7 +5,7 @@ from .models import Product, Categories
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 import json
-
+from django.views.decorators.csrf import csrf_protect
 
 def index(request):
     last_products = Product.objects.filter(is_active=True).select_related('category').order_by('-id')[:4]
@@ -40,7 +40,7 @@ def product_detail(request, pk):
 
 
 # korzina    backend
-
+@csrf_protect
 def order_create(request):
     if request.method == 'POST':
         data = json.loads(request.body)
