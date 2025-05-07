@@ -38,14 +38,6 @@ class Product(models.Model):
 class TopProduct(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     order = models.PositiveIntegerField(default=0, help_text="Qaysi tartibda chiqishini belgilang")
-
     def __str__(self):
         return f"Top: {self.product.name_uz}"
 
-
-# def save(self, *args, **kwargs):
-#             if len(self.name_uz) > 20:
-#                 self.name_uz = self.name_uz[:20].rsplit(' ', 1)[0]
-#             if len(self.name_ru) > 20:
-#                 self.name_ru = self.name_ru[:20].rsplit(' ', 1)[0]
-#             super().save(*args, **kwargs)
