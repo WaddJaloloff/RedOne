@@ -33,8 +33,8 @@
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">{% trans "Bosh sahifa" %}</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">{% trans
-                            "Kategoriyalar"%}</a>
+                        <a class="nav-link dropdown-toggle" href="#" 
+                        data-bs-toggle="dropdown">{% trans "Kategoriyalar"%}</a>
                         <div class="dropdown-menu">
                             {% for category in categories %}
                             {% if LANGUAGE_CODE == "ru" %}

@@ -408,7 +408,9 @@ ul {
   line-height: 22px;
   max-width: 500px;
 }
-
+a.dropdown-item {
+  text-align: center;
+}
 select {
   background-color: black;
   color: white;
@@ -537,6 +539,12 @@ select:focus {
 }
 
 @media (max-width: 455px) {
+
+
+  .item-product {
+    width: 175px;
+    flex: 0 0 45%;
+  }
   .category-product {
     width: 48%;
   }
@@ -591,6 +599,7 @@ select:focus {
 }
 
 @media (max-width: 990px) {
+  
   .product-wrapper {
     gap: 10px;
     justify-content: center;
@@ -686,10 +695,9 @@ select:focus {
   }
 
   .item-product {
-    flex: 0 0 95%;
-    /* Rasmni 95% gacha kattalashtirish */
+    flex: 0 0 47%;
     scroll-snap-align: center;
-  }
+}
 }
 
 
