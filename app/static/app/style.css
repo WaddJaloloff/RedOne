@@ -431,7 +431,7 @@ select:focus {
 }
 
 
-@media (max-width: 500px) {
+@media (max-width: 988px) {
   .product-wrapper {
     gap: 15px;
     margin-bottom: -0;
