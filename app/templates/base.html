@@ -339,15 +339,14 @@
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
         function addToCart(id, name, price, imageUrl, size) {
-            size = size.replace("ml", "");
+            filter_size = size.replace("ml", "");
             price = parseFloat(price);
 
             if (isNaN(price) || price <= 0) {
                 alert('Mahsulot narxi noto‘g‘ri!');
                 return;
             }
-            console.log(size)
-            const itemKey = id + "-" + size;
+            const itemKey = id + "-" + filter_size;
             const idx = cart.findIndex(i => i.itemKey === itemKey);
 
             if (idx > -1) {
@@ -422,7 +421,7 @@
                 <div class="cart-item-info">
                     <h6 class="cart-item-name mb-1">${item.name}</h6>
                     <small class="cart-item-price">Narxi: ${item.price.toLocaleString()} so'm</small></br>
-                    <small class="cart-item-size">O'lcham: ${item.size.toLocaleString()} ml</small>
+                    <small class="cart-item-size">O'lcham: ${item.size.toLocaleString()}</small>
                 </div>
             </div>
             <div class="cart-item-flex d-flex align-items-center">
