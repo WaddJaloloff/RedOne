@@ -11,7 +11,7 @@ class Categories(models.Model):
 
 class Product(models.Model):
     name_uz = models.CharField(max_length=200)
-    name_ru = models.CharField(max_length=200)
+    name_ru = models.CharField(max_length=200, blank=True)
     size1 = models.CharField(max_length=10)
     price1 = models.IntegerField()
     size2 = models.CharField(max_length=10, null=True, blank=True)
@@ -24,6 +24,11 @@ class Product(models.Model):
     def __str__(self):
         return self.name_uz
     
+    def save(self, *args, **kwargs):
+        if not self.name_ru:
+            self.name_ru = self.name_uz
+        super().save(*args, **kwargs)
+
     @property
     def formatted_price1(self):
         return f"{self.price1:,}".replace(",", " ")

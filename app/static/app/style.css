@@ -67,9 +67,27 @@ ul {
 }
 
 .dropdown-menu {
+  padding: 0!important;
   background-color: #000 !important;
   color: #fff !important;
 }
+.slider .item img {
+  width: 100%; /* Rasmlar divni to'ldirish uchun kenglikni 100% qilib o'rnating */
+  height: 75%; /* Rasmlar divni to'ldirish uchun balandlikni 100% qilib o'rnating */
+  object-fit: cover; /* Rasmni divga moslashtirish, ortiqcha qismlarini kesib tashlash */
+  object-position: center; /* Rasmni markazga joylashtirish */
+}
+
+.no-style-link {
+  text-decoration: none;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  display: block; /* Agar bu slayder elementlarining xususiyatlariga ta'sir qilsa */
+}
+
+
 
 /* .base{ 
   text-align: center; 
@@ -235,9 +253,16 @@ ul {
   justify-content: center;
 }
 
+.language-box {
+  margin: 0 !important;
+  margin-left: 20px !important;
+
+}
+
 input#customer-phone {
   margin-top: 5em;
 }
+
 input#customer-phone {
   border: 1px solid rgb(0, 81, 255);
 }
@@ -415,8 +440,13 @@ input#customer-phone {
   line-height: 22px;
   max-width: 500px;
 }
+
 a.dropdown-item {
-  text-align: center;
+  text-align: start;
+  border-bottom: 1px solid #555;
+}
+.navbar-nav .dropdown-menu {
+      border: 1px solid #555;
 }
 select {
   background-color: black;
@@ -552,6 +582,7 @@ select:focus {
     width: 175px;
     flex: 0 0 45%;
   }
+
   .category-product {
     width: 48%;
   }
@@ -606,7 +637,8 @@ select:focus {
 }
 
 @media (max-width: 990px) {
-  
+  .language-box{
+    margin: 0 !important;}
   .product-wrapper {
     gap: 10px;
     justify-content: center;
@@ -636,6 +668,7 @@ select:focus {
   .products-category {
     margin: 30px 0;
   }
+
   .about-img {
     max-width: 100% !important;
     object-fit: cover;
@@ -704,7 +737,7 @@ select:focus {
   .item-product {
     flex: 0 0 47%;
     scroll-snap-align: center;
-}
+  }
 }
 
 
@@ -720,6 +753,7 @@ select:focus {
   transition: all 0.3s ease;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transform: translateY(0);
+  font-weight: 500;
 }
 
 .size-box:hover {
@@ -727,7 +761,10 @@ select:focus {
 }
 
 .size-box.active {
-  background-color: #000;
-  color: #fff;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  background-color: #111;         /* chuqur qora */
+  color: #fff;                    /* oq matn */
+  border-color: #fff;             /* oq ramka */
+  transform: scale(1.08) translateY(-3px); /* yengil ko‘tarilish va zoom */
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.15); /* oq rangli noaniq soya */
+  font-weight: 600;
 }

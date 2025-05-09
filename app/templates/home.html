@@ -3,7 +3,7 @@
 {% load i18n %}
 {% get_current_language as LANGUAGE_CODE %}
 {% get_available_languages as LANGUAGES %}
-{% block title %}Mahsulotlar{% endblock %}
+{% block title %}RedOne - Uzbekistan{% endblock %}
 {% block content %}
 
     <div>
@@ -18,77 +18,67 @@
           </h2>
           <div class="slider">
             <div class="item">
-              <img src="/media/category_hair_mobile.webp" alt="Image 2">
-              <p>{% trans "Hair Styling" %}
-                <span class="icon-wrap">
-                  <svg style="width: 15px;" viewBox="0 0 14 10" fill="none" aria-hidden="true" focusable="false"
-                    class="icon icon-arrow" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd"
-                      d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z"
-                      fill="currentColor"></path>
-                  </svg>
-                </span>
-              </p>
+                <a href="{% url 'products' %}#Soch%20uchun">
+                    <img src="/media/category_hair_mobile.webp" alt="Image 2">
+                    <p>{% trans "Soch uchun" %}
+                        <span class="icon-wrap">
+                            <svg style="width: 15px;" viewBox="0 0 14 10" fill="none" aria-hidden="true" focusable="false" class="icon icon-arrow" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z" fill="currentColor"></path>
+                            </svg>
+                        </span>
+                    </p>
+                </a>
             </div>
             <div class="item">
-              <img src="/media/skincare_category.png" alt="Image 1">
-              <p>Skin Care
-                <span class="icon-wrap">
-                  <svg style="width: 15px;" viewBox="0 0 14 10" fill="none" aria-hidden="true" focusable="false"
-                    class="icon icon-arrow" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd"
-                      d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z"
-                      fill="currentColor"></path>
-                  </svg>
-                </span>
-              </p>
-            </div>
-
-            <div class="item">
-              <img src="/media/wax_category.jpg" alt="Image 3">
-              <p>Wax
-                <span class="icon-wrap">
-                  <svg style="width: 15px;" viewBox="0 0 14 10" fill="none" aria-hidden="true" focusable="false"
-                    class="icon icon-arrow" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd"
-                      d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z"
-                      fill="currentColor"></path>
-                  </svg>
-                </span>
-
-
-              </p>
+                <a href="{% url 'products' %}#Yuz#%20uchun">
+                    <img src="/media/skincare_category.png" alt="Image 1">
+                    <p>{% trans 'Yuz uchun' %}
+                        <span class="icon-wrap">
+                            <svg style="width: 15px;" viewBox="0 0 14 10" fill="none" aria-hidden="true" focusable="false" class="icon icon-arrow" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z" fill="currentColor"></path>
+                            </svg>
+                        </span>
+                    </p>
+                </a>
             </div>
             <div class="item">
-              <img src="/media/spray.webp" alt="Image 5">
-              <p>Spray
-                <span class="icon-wrap">
-                  <svg style="width: 15px;" viewBox="0 0 14 10" fill="none" aria-hidden="true" focusable="false"
-                    class="icon icon-arrow" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd"
-                      d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z"
-                      fill="currentColor"></path>
-                  </svg>
-                </span>
-              </p>
+                <a href="{% url 'products' %}#Soqol%20uchun">
+                    <img src="/media/soqol_uchun.jpg" alt="Image 3">
+                    <p>{% trans 'Soqol uchun' %}
+                        <span class="icon-wrap">
+                            <svg style="width: 15px;" viewBox="0 0 14 10" fill="none" aria-hidden="true" focusable="false" class="icon icon-arrow" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z" fill="currentColor"></path>
+                            </svg>
+                        </span>
+                    </p>
+                </a>
             </div>
-                
-              <div class="item">
-                <a href="{% url 'products' %}">
-                <img src="/media/redist.png" alt="Image 4">
-                <p>Ayollar uchun
-                  <span class="icon-wrap">
-                    <svg style="width: 15px;" viewBox="0 0 14 10" fill="none" aria-hidden="true" focusable="false"
-                      class="icon icon-arrow" xmlns="http://www.w3.org/2000/svg">
-                      <path fill-rule="evenodd" clip-rule="evenodd"
-                        d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z"
-                        fill="currentColor"></path>
-                    </svg>
-                  </span>
-                </p>
-              </a>
-              </div>
-          </div>
+            <div class="item">
+                <a href="{% url 'products' %}#Ayollar%20uchun">
+                    <img src="/media/redist.png" alt="Image 4">
+                    <p>{% trans 'Ayollar uchun' %}
+                        <span class="icon-wrap">
+                            <svg style="width: 15px;" viewBox="0 0 14 10" fill="none" aria-hidden="true" focusable="false" class="icon icon-arrow" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z" fill="currentColor"></path>
+                            </svg>
+                        </span>
+                    </p>
+                </a>
+            </div>
+            <div class="item">
+                <a href="{% url 'products' %}#Boshqalar%20(Others)">
+                    <img src="/media/redone-uzbekistan.png" alt="Image 5">
+                    <p>{% trans 'Boshqalar (Others)' %}
+                        <span class="icon-wrap">
+                            <svg style="width: 15px;" viewBox="0 0 14 10" fill="none" aria-hidden="true" focusable="false" class="icon icon-arrow" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z" fill="currentColor"></path>
+                            </svg>
+                        </span>
+                    </p>
+                </a>
+            </div>
+        </div>
+        
         </div>
       </div>
 
