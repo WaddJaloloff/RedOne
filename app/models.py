@@ -18,7 +18,7 @@ class Product(models.Model):
     price2 = models.IntegerField(null=True, blank=True)
     about_uz = models.TextField(null=True, blank=True)
     about_ru = models.TextField(null=True, blank=True)
-    category = models.ForeignKey(Categories, on_delete=models.CASCADE)
+    category = models.ForeignKey(Categories, on_delete=models.SET_NULL, null=True, blank=True)
     image = models.ImageField(upload_to='images')
     is_active = models.BooleanField(default=True)
     def __str__(self):
@@ -36,7 +36,7 @@ class Product(models.Model):
     from django.core.exceptions import ValidationError
 
 class TopProduct(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True, blank=True)
     order = models.PositiveIntegerField(default=0, help_text="Qaysi tartibda chiqishini belgilang")
     def __str__(self):
         return f"Top: {self.product.name_uz}"

@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import Product, Categories, TopProduct
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ['id', 'name_uz', 'about_uz']
+    list_display = ['id', 'category', 'name_uz', 'about_uz']
     search_fields = ['name_uz', 'price1', 'about_uz']
 
 admin.site.register(Product, ProductAdmin)

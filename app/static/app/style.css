@@ -228,11 +228,18 @@ ul {
 }
 
 .about-img {
-  max-width: 45%;
+  min-width: 45%;
   border-radius: 20px 20px 20px 20px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+input#customer-phone {
+  margin-top: 5em;
+}
+input#customer-phone {
+  border: 1px solid rgb(0, 81, 255);
 }
 
 .about-img img {

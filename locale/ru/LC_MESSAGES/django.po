@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-05 13:55+0500\n"
-"PO-Revision-Date: 2025-05-05 13:56+0000\n"
+"POT-Creation-Date: 2025-05-08 05:52+0500\n"
+"PO-Revision-Date: 2025-05-08 05:54+0000\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -19,67 +19,75 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 "X-Translated-Using: django-rosetta 0.10.2\n"
 
-#: .\app\templates\base.html:34
+#: .\app\templates\base.html:36
 msgid "Bosh sahifa"
 msgstr "Главная"
 
-#: .\app\templates\base.html:36 .\app\templates\home.html:17
+#: .\app\templates\base.html:39 .\app\templates\home.html:17
 msgid "Kategoriyalar"
 msgstr "Категории"
 
-#: .\app\templates\base.html:49
+#: .\app\templates\base.html:52
 msgid "Haqimizda"
 msgstr "О нас"
 
-#: .\app\templates\base.html:51 .\app\templates\base.html:141
+#: .\app\templates\base.html:54 .\app\templates\base.html:144
 msgid "Mahsulotlar"
 msgstr "Продукция"
 
-#: .\app\templates\base.html:122
+#: .\app\templates\base.html:105
+msgid "Yopish"
+msgstr "закрыть"
+
+#: .\app\templates\base.html:107
+msgid "Buyurtmani yuborish"
+msgstr "Заказать"
+
+#: .\app\templates\base.html:125
 msgid "tashkilot"
 msgstr "организация"
 
-#: .\app\templates\base.html:124
+#: .\app\templates\base.html:127
 msgid "Biz haqimizda"
 msgstr "О нас"
 
-#: .\app\templates\base.html:125
+#: .\app\templates\base.html:128
 msgid "hizmatlarimiz"
 msgstr "наши услуги"
 
-#: .\app\templates\base.html:126
+#: .\app\templates\base.html:129
 msgid "siyosat"
 msgstr "политика"
 
-#: .\app\templates\base.html:131
+#: .\app\templates\base.html:134
 msgid "Yordam-Aloqa"
 msgstr "Помощь-Связь"
 
-#: .\app\templates\base.html:133
+#: .\app\templates\base.html:136
 msgid "Telefon"
 msgstr "Телефон"
 
-#: .\app\templates\base.html:134
+#: .\app\templates\base.html:137
 msgid "Telegram"
 msgstr "Телеграм "
 
-#: .\app\templates\base.html:135
+#: .\app\templates\base.html:138
 msgid "Instagram"
 msgstr "Инстаграм"
 
-#: .\app\templates\base.html:139
+#: .\app\templates\base.html:142
 msgid "online dokon"
 msgstr "интернет-магазин"
 
-#: .\app\templates\base.html:142
+#: .\app\templates\base.html:145
 msgid "kategoriyalar"
 msgstr "Категории"
 
-#: .\app\templates\base.html:143
+#: .\app\templates\base.html:146
 msgid "Yuqoriga"
 msgstr "Вверх"
 
-#: .\app\templates\base.html:147
+#: .\app\templates\base.html:150
 msgid "bizga qo'shiling"
 msgstr "Присоединяйтесь к нам"
 
@@ -100,21 +108,24 @@ msgid "Biz haqimizda!"
 msgstr "О нас"
 
 #: .\app\templates\home.html:153
-#| msgid ""
-#| "Biz sizga taqdim etayotgan RedOne — dunyo bo‘yicha mashhur Turkiyada ishlab "
-#| "chiqariluvchi erkaklar uchun soch va tashqi ko‘rinish parvarishiga "
-#| "ixtisoslashgan professional brenddir. RedOne mahsulotlari yuqori sifati, "
-#| "kuchli fiksatsiyasi, yoqimli hidi va zamonaviy dizayni bilan ajralib turadi."
 msgid ""
-"Biz sizga taqdim etayotgan RedOne — dunyo bo'yicha mashhur Turkiyada ishlab "
-"chiqariluvchi erkaklar uchun soch va tashqi ko‘rinish parvarishiga "
-"ixtisoslashgan professional brenddir. RedOne mahsulotlari yuqori sifati, "
-"kuchli fiksatsiyasi, yoqimli hidi va zamonaviy dizayni bilan ajralib turadi."
+"Ekologik o'ziga xosligi bilan ajralib turadigan kompaniyamiz innovatsion "
+"texnologiyalar bilan mamlakatimizda va xorijda uzoq muddatli laboratoriya "
+"tadqiqotlari natijasida ishlab chiqilgan RedOne Men's Series brendini taqdim"
+" etdi. Barcha mahsulotlar erkaklar sochlari va teri turlariga mos keladigan "
+"ingredientlar bilan professional sartaroshlardan foydalanish uchun ishlab "
+"chiqilgan. Ishlab chiqarishdan sartaroshxonagacha bo'lgan operatsiya "
+"jarayoni bizning professional jamoamiz tomonidan har bir detalni hisobga "
+"olgan holda, jahon me'yorlariga muvofiq amalga oshiriladi. Korporativ biznes"
+" kontseptsiyamiz, 7 yillik tajribamiz, eng so'nggi texnologiya mashina "
+"parkimiz, malakali professional ishchi kuchini birlashtirgan yangi "
+"fabrikamiz Mahsulotlarimiz gigienik muhitda ishlab chiqariladi, Turkiya, "
+"Yevropa, Fors ko'rfazi va Bolqonda ko'plab soch va go'zallik salonlari "
+"mamlakatning muhim qismida soch salonlari tarmog'i bilan ishlaydi!"
 msgstr ""
-"Представляем вам RedOne — всемирно известный профессиональный бренд, "
-"специализирующийся на средствах по уходу за волосами и волосами для мужчин, "
-"производимых в Турции. Продукция RedOne отличается высоким качеством, "
-"сильной фиксацией, приятным запахом и современным дизайном."
+"Наша компания, которая выделяется своей экологической идентичностью, представила бренд RedOne Men’s Series, разработанный в результате длительных лабораторных исследований в стране и за рубежом с использованием инновационных технологий. Все продукты были разработаны для использования профессиональными парикмахерами с ингредиентами, подходящими для мужских типов волос и кожи.\n"
+"Операционный процесс, от производства до парикмахерских, осуществляется нашей профессиональной командой, принимая во внимание каждую деталь, в соответствии с мировыми нормами.\n"
+"Не идя на компромисс с нашей корпоративной бизнес-концепцией, нашим 7-летним опытом, новейшим технологическим парком машин, объединением квалифицированной профессиональной рабочей силы, нашим новым заводом Наша продукция производится в нетронутой гигиенической среде, со многими парикмахерскими и салонами красоты в Турции, Европе, Персидском заливе и на Балканах с сетью парикмахерских в значительной части страны также работает!"
 
 #: .\app\templates\home.html:156
 msgid "Harid qilish"
@@ -124,20 +135,25 @@ msgstr "Покупки"
 msgid "Yangi Mahsulotlar"
 msgstr "Продукция"
 
-#: .\app\templates\home.html:194 .\app\templates\product-detail.html:38
+#: .\app\templates\home.html:194 .\app\templates\product-detail.html:42
 #: .\app\templates\products.html:31 .\app\templates\products.html:59
 msgid "sum"
 msgstr "сум"
 
-#: .\app\templates\product-detail.html:44
+#: .\app\templates\product-detail.html:48
 msgid "Savatga qo‘shish"
 msgstr "Добавить в корзину"
 
-#~ msgid "Yopish"
-#~ msgstr "закрыть"
-
-#~ msgid "Buyurtmani yuborish"
-#~ msgstr "Заказать"
+#~ msgid ""
+#~ "Biz sizga taqdim etayotgan RedOne — dunyo bo'yicha mashhur Turkiyada ishlab "
+#~ "chiqariluvchi erkaklar uchun soch va tashqi ko‘rinish parvarishiga "
+#~ "ixtisoslashgan professional brenddir. RedOne mahsulotlari yuqori sifati, "
+#~ "kuchli fiksatsiyasi, yoqimli hidi va zamonaviy dizayni bilan ajralib turadi."
+#~ msgstr ""
+#~ "Представляем вам RedOne — всемирно известный профессиональный бренд, "
+#~ "специализирующийся на средствах по уходу за волосами и волосами для мужчин, "
+#~ "производимых в Турции. Продукция RedOne отличается высоким качеством, "
+#~ "сильной фиксацией, приятным запахом и современным дизайном."
 
 #~ msgid "Savat"
 #~ msgstr "Корзина"

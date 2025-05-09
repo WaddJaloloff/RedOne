@@ -9,6 +9,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}RedOne{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons/css/flag-icons.min.css">
+
 
     <!-- Common CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -33,8 +35,7 @@
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">{% trans "Bosh sahifa" %}</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" 
-                        data-bs-toggle="dropdown">{% trans "Kategoriyalar"%}</a>
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{% trans "Kategoriyalar"%}</a>
                         <div class="dropdown-menu">
                             {% for category in categories %}
                             {% if LANGUAGE_CODE == "ru" %}
@@ -88,21 +89,23 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="cartModalLabel">Savat</h5>
+                        <h5 class="modal-title" id="cartModalLabel">{% trans 'Savat' %}</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <ul id="cart-items" class="list-group mb-3"></ul>
                         <input id="customer-phone" type="text" class="form-control mb-3"
-                            placeholder="Bog\'lanish uchun raqam!" style="display:none;">
-                        <div id="cart-total" class="text-end fw-bold fs-5 mb-3" style="display:none;"></div>
-                        <h6 id="empty-message" class="text-center">Savat bo'sh</h6>
+                            placeholder="{% trans 'Telefon raqamingiz !' %}" style="display:none;">
+                        <div id="cart-total" class="text-end fw-bold fs-5 mb-3" style="display:none;"
+                            data-total-text="{% trans 'Jami' %}" data-currency="{% trans 'sum' %}">
+                        </div>
+
+                        <h6 id="empty-message" class="text-center">{% trans 'Savat bo&#39;sh' %}</h6>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" 
-                        data-bs-dismiss="modal">{% trans "Yopish"%}</button>
-                        <button type="button" class="btn btn-primary" 
-                        onclick="submitOrder()">{% trans "Buyurtmani yuborish" %}</button>
+                        <button class="btn btn-secondary" data-bs-dismiss="modal">{% trans "Yopish"%}
+                        </button>
+                        <button class="btn btn-primary" onclick="submitOrder()">{% trans "Buyurtma berish" %}</button>
                     </div>
                 </div>
             </div>
@@ -397,6 +400,8 @@
             const phoneInput = document.getElementById('customer-phone');
             const emptyMessage = document.getElementById('empty-message');
             const totalDiv = document.getElementById('cart-total');
+            const totalText = totalDiv.dataset.totalText;
+            const currency = totalDiv.dataset.currency;
 
             if (totalQuantity === 0) {
                 emptyMessage.style.display = 'block';
@@ -406,8 +411,9 @@
                 emptyMessage.style.display = 'none';
                 phoneInput.style.display = 'block';
                 totalDiv.style.display = 'block';
-                totalDiv.textContent = `Jami: ${totalPrice.toLocaleString()} so'm`;
+                totalDiv.textContent = `${totalText}: ${totalPrice.toLocaleString()} ${currency}`;
             }
+
 
             cart.forEach(item => {
                 const itemTotal = item.price * item.quantity;
@@ -458,7 +464,7 @@
 
             const payload = { phone, items: cart };
 
-            const csrfToken = getCSRFToken(); 
+            const csrfToken = getCSRFToken();
 
             if (!csrfToken) {
                 alert('CSRF token yo\'q. Iltimos, sahifani yangilang!');
@@ -495,7 +501,7 @@
                     return trimmed.substring(name.length + 1);
                 }
             }
-            return null;  
+            return null;
         }
 
 
