@@ -440,6 +440,10 @@ input#customer-phone {
   line-height: 22px;
   max-width: 500px;
 }
+.dropdown-menu-end[data-bs-popper]{
+    right: auto !important;
+    left: auto !important;
+  }
 
 a.dropdown-item {
   text-align: start;
