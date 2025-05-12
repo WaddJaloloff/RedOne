@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import *
 from .run_bot import send_order_to_group
 from .models import Product, Categories
@@ -6,6 +6,44 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 import json
 from django.views.decorators.csrf import csrf_protect
+from django.http import JsonResponse
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .models import Product, TopProduct
+from .serializer import ProductSerializer, TopProductSerializer
+
+
+@api_view(['GET'])
+def index_api(request):
+    top_products = TopProduct.objects.select_related('product').order_by('order')[:4]
+    serializer = TopProductSerializer(top_products, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def products_api(request):
+    products = Product.objects.filter(is_active=True).select_related('category')
+    serializer = ProductSerializer(products, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def all_products_api(request):
+    products = Product.objects.select_related('category')
+    serializer = ProductSerializer(products, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def product_detail_api(request, pk):
+    try:
+        product = Product.objects.get(pk=pk)
+    except Product.DoesNotExist:
+        return Response({'error': 'Mahsulot topilmadi'}, status=404)
+    
+    serializer = ProductSerializer(product)
+    return Response(serializer.data)
+
+
 
 def index(request):
     last_products = Product.objects.filter(is_active=True).select_related('category').order_by('-id')[:4]
@@ -37,6 +75,19 @@ def products(request):
 def product_detail(request, pk):
     product = Product.objects.get(pk=pk)
     return render(request, 'product-detail.html', {'product': product})
+
+
+# API viewla
+
+
+
+
+
+
+
+
+
+
 
 
 # korzina    backend
