@@ -1,0 +1,779 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul.navbar-nav {
+    padding-right: 20px;
+}
+
+
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  background-color: #000 !important;
+  position: fixed;
+}
+
+.sticky-top {
+  padding: 20px !important;
+}
+
+.navbar .nav-link,
+.navbar .navbar-brand,
+.navbar .dropdown-item {
+  color: #fff !important;
+}
+
+.navbar-collapse {
+  justify-content: end !important;
+}
+
+.navbar .nav-link:hover,
+.navbar .dropdown-item:hover {
+  color: #f39c12 !important;
+  /* hover paytida sariq rang */
+}
+
+.custom-navbar {
+  background-color: false !important;
+  /* yarim shaffof qora fon */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.custom-navbar .nav-link,
+.custom-navbar {
+  color: #fff !important;
+}
+
+.dropdown-menu {
+  padding: 0!important;
+  background-color: #000 !important;
+  color: #fff !important;
+}
+.slider .item img {
+  width: 100%; /* Rasmlar divni to'ldirish uchun kenglikni 100% qilib o'rnating */
+  height: 75%; /* Rasmlar divni to'ldirish uchun balandlikni 100% qilib o'rnating */
+  object-fit: cover; /* Rasmni divga moslashtirish, ortiqcha qismlarini kesib tashlash */
+  object-position: center; /* Rasmni markazga joylashtirish */
+}
+
+.no-style-link {
+  text-decoration: none;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  display: block; /* Agar bu slayder elementlarining xususiyatlariga ta'sir qilsa */
+}
+
+
+
+/* .base{ 
+  text-align: center; 
+} */
+.navbar-brand {
+  font-size: 25px !important;
+  color: #fff !important;
+}
+
+.categories-and-Products h2,
+.Products h2 {
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 100;
+  font-size: 40px;
+}
+
+.category {
+  padding: 20px 0;
+}
+
+.Products {
+  padding: 30px 0px;
+}
+
+.container {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.slider {
+  display: flex;
+  justify-content: space-between;
+  transition: transform 0.5s ease;
+  padding-left: 0;
+}
+
+.item {
+  width: 19%;
+  text-align: center;
+}
+
+.item a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.item a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+.item-product {
+  position: relative;
+  overflow: hidden;
+  width: 23.5%;
+  margin: 10px;
+  display: inline-block;
+  flex: 0 0 auto;
+  text-decoration: none;
+  color: inherit;
+}
+
+.item-product:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+.item-img-wrapper {
+  width: 100%;
+  background-color: #f2f2f2dd;
+  border-radius: 10px;
+}
+
+.item img,
+.item-product img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  border-radius: 15px;
+}
+
+.item p,
+.item-product p {
+  margin-top: 10px;
+  font-size: 17px;
+  color: #555;
+  text-align: center;
+}
+
+.image-with-text__text {
+  margin-bottom: 50px;
+}
+
+.image-with-text__content {
+  margin: 0;
+}
+
+.image-with-text__heading {
+  font-family: "Avenir Next Rounded", sans-serif;
+  margin-bottom: 10px;
+
+}
+
+.button--secondary {
+  color: #fff;
+  border-radius: 12px;
+  border: 1px solid #fff;
+  text-decoration: none;
+  padding: 15px 20px;
+}
+
+.button--secondary:hover {
+  border: 4px solid #fff;
+
+}
+
+/* Media Query for smaller screens */
+
+
+.sticky-top {
+  padding: 20px 50px !important;
+  padding-right: 30px !important;
+}
+
+.view-all {
+  background-color: #000;
+  color: #fff;
+  border-radius: 0.8em;
+  padding: 12px 15px;
+  font-size: 1.5em;
+  letter-spacing: .1rem;
+  cursor: pointer;
+  font: inherit;
+  margin: 30px 0;
+}
+
+.about-us {
+  text-align: start;
+  padding: 50px 0;
+  display: flex;
+  justify-content: center;
+  background-color: #000;
+  color: #fff;
+
+}
+
+.about-big {
+  display: flex;
+  padding: 0 50px;
+  flex-direction: row;
+}
+
+.about-img {
+  min-width: 45%;
+  border-radius: 20px 20px 20px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.language-box {
+  margin: 0 !important;
+  margin-left: 20px !important;
+
+}
+
+input#customer-phone {
+  margin-top: 5em;
+}
+
+input#customer-phone {
+  border: 1px solid rgb(0, 81, 255);
+}
+
+.about-img img {
+  margin: auto;
+  border-radius: 25px;
+  /* max-width: 70%; 100% bo‘lishi yaxshi ko‘rinadi */
+  height: 700px;
+  object-fit: cover;
+  /* rasmni konteynerga sig‘dirib, ortiqchasini kesadi */
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+
+}
+
+
+.about-content {
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 0;
+}
+
+.category-product {
+  display: flex;
+  flex-direction: column;
+  width: 22%;
+  margin-right: 4%;
+  margin-bottom: 30px;
+  box-sizing: border-box;
+}
+
+.category-product:nth-child(4n) {
+  margin-right: 0;
+}
+
+.category-img-wrapper img {
+  width: 100%;
+  height: auto;
+}
+
+
+.category-img-wrapper {
+  background-color: #f2f2f2dd;
+  flex: 0 0 auto;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.282);
+  border-radius: 10px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.category-product img {
+  display: block;
+  width: 100%;
+  height: 250px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.category-price {
+  font-weight: 500;
+}
+
+.category-product p {
+  margin-top: 10px;
+  font-size: 17px;
+  color: #555;
+  text-align: center;
+}
+
+.category-product,
+.category-product *,
+.category-product:hover,
+.category-product:hover * {
+  text-decoration: none !important;
+}
+
+
+.products-category {
+  margin: 50px 0;
+  padding: 0;
+}
+
+.category-item {
+  padding: 30px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.category-item {
+  scroll-margin-top: 150px;
+}
+
+.product-controls {
+  margin-top: 12px;
+}
+
+.add-to-cart-btn {
+  background-color: #000;
+  /* Чёрная кнопка */
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #333;
+}
+
+.detail {
+  margin: 75px 0;
+}
+
+.detail-left {
+  background-color: #f2f2f2dd;
+  flex: 0 0 auto;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.282);
+  border-radius: 10px;
+  overflow: hidden;
+  width: 500px;
+  margin-bottom: 20px;
+}
+
+.detail-left img {
+  display: block;
+  width: 100%;
+  height: 400px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.detail_container {
+  display: flex;
+  gap: 100px;
+}
+
+.detail-heading {
+  margin-top: 15px;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 35px;
+}
+
+.price {
+  font-size: 17px;
+  line-height: 18px;
+  font-weight: 500;
+  margin: 15px 0;
+}
+
+.detail-category {
+  font-size: 17px;
+  line-height: 18px;
+  font-weight: 600;
+  margin: 15px 0;
+}
+
+.detail-desc {
+  font-size: 17px;
+  line-height: 22px;
+  max-width: 500px;
+}
+.dropdown-menu-end[data-bs-popper]{
+    right: auto !important;
+    left: auto !important;
+  }
+
+a.dropdown-item {
+  text-align: start;
+  border-bottom: 1px solid #555;
+}
+.navbar-nav .dropdown-menu {
+      border: 1px solid #555;
+}
+select {
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+  padding: 5px 10px;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+select option {
+  background-color: black;
+  color: white;
+}
+
+select:focus {
+  outline: none;
+  border-color: #ccc;
+}
+
+
+@media (max-width: 988px) {
+  .product-wrapper {
+    gap: 15px;
+    margin-bottom: -0;
+    margin-right: -0;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .item-product {
+    width: 175px;
+    flex: 0 0 45%;
+  }
+
+  .item-img-wrapper img {
+    height: 150px;
+    object-fit: contain;
+  }
+
+  .category-img-wrapper {
+    width: 175px;
+  }
+
+  .category-product {
+    width: 48%;
+  }
+
+  .category-product img {
+    height: 160px;
+  }
+
+  .category-product p {
+    font-size: 13px;
+  }
+
+  .products-category {
+    margin: 30px 0;
+  }
+
+  .category-item {
+    padding: 20px 0;
+    text-align: center;
+  }
+
+  .category-item {
+    scroll-margin-top: 100px;
+  }
+
+  .category-heading {
+    font-size: 30px;
+    margin-bottom: 5px;
+  }
+
+  .detail {
+    margin: 40px 0;
+  }
+
+  .detail-left {
+    width: 270px;
+  }
+
+  .detail-left img {
+    height: 300px;
+  }
+
+  .detail_container {
+    gap: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .detail-heading {
+    font-size: 25px;
+    line-height: 25px;
+    text-align: center;
+  }
+
+  .detail-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .detail-price {
+    font-size: 15px;
+    line-height: 16px;
+    text-align: center;
+  }
+
+  .detail-category {
+    font-size: 15px;
+    line-height: 16px;
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  .detail-desc {
+    font-size: 15px;
+    line-height: 20px;
+    max-width: 300px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 455px) {
+
+
+  .item-product {
+    width: 175px;
+    flex: 0 0 45%;
+  }
+
+  .category-product {
+    width: 48%;
+  }
+
+  .category-img-wrapper {
+    width: 100%;
+  }
+
+  .category-product img {
+    height: 140px;
+  }
+
+  .category-product p {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 390px) {
+  .category-product {
+    width: 100%;
+  }
+
+  .category-img-wrapper {
+    width: 100%;
+  }
+
+  .category-product img {
+    height: 130px;
+  }
+
+  .category-product p {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 335px) {
+  .category-product {
+    width: 100%;
+  }
+
+  .category-img-wrapper {
+    width: 100%;
+  }
+
+  .category-product img {
+    height: 120px;
+  }
+
+  .category-product p {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 990px) {
+  .language-box{
+    margin: 0 !important;}
+  .product-wrapper {
+    gap: 10px;
+    justify-content: center;
+  }
+
+  .category-product {
+    width: 45%;
+    margin-right: 0;
+    align-items: center;
+  }
+
+  .category-img-wrapper {
+    width: 100%;
+  }
+
+  .category-product img {
+    height: 180px;
+    object-fit: contain;
+  }
+
+  .category-product p {
+    font-size: 14px;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .products-category {
+    margin: 30px 0;
+  }
+
+  .about-img {
+    max-width: 100% !important;
+    object-fit: cover;
+  }
+
+  .about-big {
+    display: flex;
+    flex-direction: column !important;
+  }
+
+  .slider {
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+    gap: 10px;
+  }
+
+  .item {
+    flex: 0 0 95%;
+    /* Rasmni 95% gacha kattalashtirish */
+    scroll-snap-align: start;
+  }
+
+  .item-product {
+    flex: 0 0 55%;
+    /* Rasmni 95% gacha kattalashtirish */
+    scroll-snap-align: start;
+  }
+
+  .item img,
+  .item-product img {
+    width: 100%;
+  }
+}
+
+@media (max-width: 450px) {
+  .about-us {
+    text-align: start;
+    padding: 25px 0;
+  }
+
+  .about-img {
+    max-width: 100% !important;
+    min-height: 200px;
+    object-fit: cover;
+  }
+
+  .about-content {
+    padding: 10px;
+  }
+
+  .about-heading {
+    font-size: 30px;
+  }
+
+  .about-text {
+    font-size: 14px;
+
+  }
+
+  .slider {
+    gap: 5px;
+  }
+
+  .item-product {
+    flex: 0 0 47%;
+    scroll-snap-align: center;
+  }
+}
+
+
+.size-box {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 5px;
+  border: 2px solid #000;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #fff;
+  color: #000;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transform: translateY(0);
+  font-weight: 500;
+}
+
+.size-box:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.size-box.active {
+  background-color: #111;         /* chuqur qora */
+  color: #fff;                    /* oq matn */
+  border-color: #fff;             /* oq ramka */
+  transform: scale(1.08) translateY(-3px); /* yengil ko‘tarilish va zoom */
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.15); /* oq rangli noaniq soya */
+  font-weight: 600;
+}
