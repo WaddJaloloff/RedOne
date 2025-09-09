@@ -27,19 +27,19 @@ The platform is integrated with a Telegram bot for easy order management.
 ## 🖼️ Screenshots
 
 ### 🗂️ Product List
-![List Products](media/screenshots/photo_2025-09-09_15-39-29.png)  
+![List Products](media/screenshorts/photo_2025-09-09_15-39-29.png)  
 Products are sorted by categories, making it easy for customers to find the desired item.
 
 ### 📄 Product Details
-![Product Detail](media/screenshots/photo_2025-09-09_15-39-29.png)  
+![Product Detail](media/screenshorts/photo_2025-09-09_15-39-29.png)  
 View detailed product information, choose size, and add it to the shopping cart.
 
 ### 🛒 Shopping Cart
-![Cart](media/screenshots/photo_2025-09-09_15-39-29.png)  
+![Cart](media/screenshorts/photo_2025-09-09_15-39-29.png)  
 Customers can review or edit their order, enter their phone number, and submit quickly.
 
 ### 🔧 Admin Panel
-![Admin Panel](media/screenshots/photo_2025-09-09_15-39-29.png)  
+![Admin Panel](media/screenshorts/photo_2025-09-09_15-39-29.png)  
 The admin panel allows adding, editing, deleting, and hiding products. Only authorized users can access it.
 
 ---
