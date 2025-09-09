@@ -38,6 +38,20 @@ View detailed product information, choose size, and add it to the shopping cart.
 ![Cart](media/screenshorts/photo_2025-09-09_15-39-36.jpg)  
 Customers can review or edit their order, enter their phone number, and submit quickly.
 
+### 🛠️ Admin Panel
+![Admin Panel](media/screenshorts/photo_2025-09-09_16-17-40.jpg)  
+The admin panel allows authorized users to **add, delete, edit, or hide products**.  
+Only admins have access to this section, keeping product management secure.
+
+### 🔔 Admin Group Notifications
+![Admin Group](media/screenshorts/photo_2025-09-09_15-39-40.jpg)  
+When a new order is placed:  
+- **Order details** (product name, size, quantity, price)  
+- **Customer phone number**  
+are automatically sent to a **private Telegram admin group** in real-time.  
+This ensures that your team never misses a single order.
+
+
 ### 🔧 Admin Panel
 ![Admin Panel](media/screenshorts/photo_2025-09-09_15-39-40.jpg)  
 The admin panel allows adding, editing, deleting, and hiding products. Only authorized users can access it.
